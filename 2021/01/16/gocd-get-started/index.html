@@ -1,0 +1,1407 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="GoCD Get Started, Dragon.Wang&#39;Zone">
+    <meta name="description" content="将进酒，杯莫停。与君歌一曲，请君为我倾耳听。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>GoCD Get Started | Dragon.Wang&#39;Zone</title>
+    <link rel="icon" type="image/png" href="/dragon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/dragon.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Dragon.Wang&#39;Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/dragon.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Dragon.Wang&#39;Zone</div>
+        <div class="logo-desc">
+            
+            将进酒，杯莫停。与君歌一曲，请君为我倾耳听。
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/dragonwang-hub/dragonwang-hub.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/dragonwang-hub/dragonwang-hub.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">GoCD Get Started</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/GoCD/">
+                                <span class="chip bg-color">GoCD</span>
+                            </a>
+                        
+                            <a href="/tags/CI-CD/">
+                                <span class="chip bg-color">CI/CD</span>
+                            </a>
+                        
+                            <a href="/tags/Pipeline/">
+                                <span class="chip bg-color">Pipeline</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%83%A8%E7%BD%B2/">
+                                <span class="chip bg-color">部署</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/DevOps/" class="post-category">
+                                DevOps
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-01-16
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    10 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="GoCD萌新入门之路"><a href="#GoCD萌新入门之路" class="headerlink" title="GoCD萌新入门之路"></a>GoCD萌新入门之路</h1><blockquote>
+<p>因本文首次发布在牛客网，故而部分图片外链无法显示。可直接通过下方链接跳转牛客网查看。<br>Refer：<a target="_blank" rel="noopener" href="https://blog.nowcoder.net/n/b800102df5354174b17819da225c4445">https://blog.nowcoder.net/n/b800102df5354174b17819da225c4445</a></p>
+</blockquote>
+<hr> 
+
+<h2 id="一、啊，什么是GoCD呀"><a href="#一、啊，什么是GoCD呀" class="headerlink" title="一、啊，什么是GoCD呀"></a>一、啊，什么是GoCD呀</h2><p>首先，需要了解一下传统的集成方式，在传统的集成方式中，团队中每天上班拉取代码，下班前merge代码。若出现code conflict，大概率是大面积的code冲突，解决冲突便会花费超多时间，并且在传统方式中若不采取CI工具，也不能保证每次代码的提交的功能都是完整且不影响原有功能，一旦出现构建失败，不能及时发现也是其存在的问题。因此传统的集成方式存在很大的缺陷。</p>
+<p>CI/CD就此出世。持续集成使用自动化工具协助开发团队，在每次merge代码后，尽可能无缝式的构建和测试代码。其主要流程包括：</p>
+<ul>
+<li>小步提交功能代码</li>
+<li>代码必须配备单元测试</li>
+<li>每次提交会自动触发CI server, 其开始执行Build -&gt; Test -&gt; Package -&gt; Deploy Dev Env任务</li>
+<li>无论任务成功与否，都能及时给予团队反馈</li>
+</ul>
+<p>持续交付是基于持续集成实现的，其流水线的各步骤和代码的部署集成都是自动的，只是在需要发布产品时候手动发布即可。在整个CD过程中还包含了monitoring, alarm, log and other tools组成实现反馈闭环系统以保证发布产品的可靠性。</p>
+<p>持续部署与持续交付的区别仅在于，持续部署在不同环境下对产品的发布都是自动的，也就是在提交代码后，若不存在问题，其会自动发布生产版本。其目的就在于使用此方式，在任何时候，代码都是可直接发布至生产阶段的。</p>
+<p><strong>GoCD</strong>-一个开源的持续集成和持续交付（CI/CD）系统。</p>
+<p>CI/CD 是一种通过在应用开发阶段引入自动化来频繁向客户交付应用的方法。CI/CD 的核心概念是持续集成、持续交付和持续部署。没必要纠结其具体语义概念，CI/CD就是一个流程，用于实现应用开发中的高度持续自动化和持续监控。</p>
+<h3 id="1、Pipeline、Stage、Job、Task"><a href="#1、Pipeline、Stage、Job、Task" class="headerlink" title="1、Pipeline、Stage、Job、Task"></a>1、Pipeline、Stage、Job、Task</h3><p>Pipeline、Stage、Job、Task依次为组合关系。一个Pipeline由多个Stage组成，Stage由Job组成，Job由Task组成。</p>
+<p>1004 </p>
+<ul>
+<li>Task：是Pipeline中最小单位。需要执行的操作，通常是一个指令。eg: ./build</li>
+<li>Job: 由一系列<strong>有序</strong>task组成。一般，若某task失败，Job也将停止（除非有指定）。其中的Task对environment variable的操作不会影响其他Task，但对文件系统的操作会影响其他tasks。</li>
+<li>Stage: 由一系列<strong>并行</strong>的Job组成。其内的Jobs各自独立，可以并行执行。若某个Job失败，其他Jobs依然会继续运行，但当前Stage会被认为失败。</li>
+<li>Pipeline: 由一系列<strong>有序</strong>Stage组成，若某个Stage失败，Pipeline则失败，其后所有Stage都不会Start。</li>
+</ul>
+<h3 id="2、Materials-and-triggers-何时Pipeline会开始运行？"><a href="#2、Materials-and-triggers-何时Pipeline会开始运行？" class="headerlink" title="2、Materials and triggers (何时Pipeline会开始运行？)"></a>2、Materials and triggers (何时Pipeline会开始运行？)</h3><p>Material 是Pipeline运行的一个基础。其通常是源代码材料仓（git,svn,mercurial,etc.），也可以是other Pipeline的Stage。</p>
+<ul>
+<li><p>GoCD Server 会不断的轮询Pipeline配置的Materials。当发现Materials有新的改变或提交时，Pipeline就会运行或被触发。</p>
+</li>
+<li><p>“time trigger” 是一种特殊Material，可以在指定的时间或指定时间间隔触发Pipeline。</p>
+</li>
+<li><p>Pipeline可以配置多个Materials，当任一Material有变化或提交都会触发Pipeline。</p>
+</li>
+</ul>
+<p>1785</p>
+<p><strong>Pipeline 作为 Material</strong></p>
+<p>当Pipeline的一个Stage被用为另一个Pipeline的Material时，Material作用才更加突出。</p>
+<p>如图：FirstPipeline的STAHE2时SecondPipeline的Material，当FirstPipeline的STAHE2执行完成后，即触发SecondPipeline开始运行。</p>
+<p>FirstPipeline则称为Upstream Pipeline。</p>
+<p>SecondPipeline称为DownStream Pipeline。</p>
+<p>FirstPipeline的STAHE2被称为SecondPipeline的上游依赖。</p>
+<p>2200 </p>
+<p>Pipeline的任何Stage都可以作为Material，Stage运行完成即可触发新的Pipeline，不在乎其所在的Pipeline中后面的Stage是否成功。</p>
+<h3 id="3、Fan-out-and-Fan-in-扇出和扇入"><a href="#3、Fan-out-and-Fan-in-扇出和扇入" class="headerlink" title="3、Fan-out and Fan-in (扇出和扇入)"></a>3、Fan-out and Fan-in (扇出和扇入)</h3><p>Fan-out 和 Fan-in是一个执行动作。</p>
+<p>Fan-out: 当Material的完成，造成多个Downstream Pipeline被触发。该Material被称作Fan-out至Downstream Pipeline。即，由材料完成后，发散至多个下游Pipeline（1-&gt;多）。Fan-out的原因不一定总与Pipeline系系相关，可以是任何Material。</p>
+<p>Fan-in: 指需要多种Upstream material 去触发Downstream Pipeline(多-&gt;1)。在GoCD中，其最重要一点在于必须在触发下游Pipeline前保证上游所有的material的版本一致。</p>
+<p>2747</p>
+<p>如上图所示，一个git仓作为Pipeline1和Pipeline2的material，此可称为Fan-out。而Pipeline1的Stage2和Pipeline2的Stage1可作为Pipeline3的material，此为Fan-in，若Pipeline1的Stage2慢于Pipeline2的Stage1，则Pipeline3会等待Pipeline Stage2的完成。多material情况下，必须保证每个material的版本是一致的，否则不会构建。</p>
+<h3 id="4、Value-Stream-Map（VSM：价值流图）"><a href="#4、Value-Stream-Map（VSM：价值流图）" class="headerlink" title="4、Value Stream Map（VSM：价值流图）"></a>4、Value Stream Map（VSM：价值流图）</h3><p>VSM：是整个Pipeline的上游依存关系和触发的下游Pipeline的端到端视图。在决定触发哪些Pipeline时，GoCD的Fan-out和Fan-in方法将处理所有的依赖关系。</p>
+<p>3206 </p>
+<p>VSM，可以抽象的展示整个Pipeline的完整过程，从构建到生产。这是建模的抽象级别，可以直接展示端到端的工作流。其中也展示了一次构建Artifact并通过管道传播。并且在此图中展示了并行化的工作流程。正因为其展示了整个Pipeline，所以其可以提供提交到生产的审核性和可追溯性。</p>
+<h3 id="5、Artifacts（Pipeline内或之间有文件传递怎么办？）"><a href="#5、Artifacts（Pipeline内或之间有文件传递怎么办？）" class="headerlink" title="5、Artifacts（Pipeline内或之间有文件传递怎么办？）"></a>5、Artifacts（Pipeline内或之间有文件传递怎么办？）</h3><p>GoCD中的每个Job都可以发布Artifacts。Artifacts可以使文件或者文件夹。</p>
+<p>Job运行后，GoCD会确保Job指定的Artifact被发布并可被用户或者下游stage和pipeline使用。</p>
+<p>一个Job可以发布多个Artifact。</p>
+<p>类型：</p>
+<p>Build Artifact：用于安装的程序，二进制文件，文档等。</p>
+<p>Test Artifact：GoCD会尝试将文件解析为测试报告。</p>
+<p><strong>如何获取Artifact</strong></p>
+<p>GoCD提供一个指定任务“<strong>Fetch Artifact Task</strong>”，用于从任意祖先Pipeline（当前Pipeline的上流即可）获取和使用Artifact。GoCD会确保获取的Artifact版本是正确的。</p>
+<p>3846</p>
+<p>如图所示，Pipeline1发布了很多Artifacts，在Pipeline1/Stage2/Job1中的<strong>Fetch Artifact Task</strong>获取了其Stage1发布的文件。</p>
+<p>在Pipeline2中获取了Pipeline1/Stage2/Job1发布的文件。Pipeline3中获取了Pipeline1/Stage1/Job2发布的文件夹（祖先-&gt;孙）。</p>
+<h3 id="6、Go-Agent（Pipeline在哪里运行呢？）"><a href="#6、Go-Agent（Pipeline在哪里运行呢？）" class="headerlink" title="6、Go-Agent（Pipeline在哪里运行呢？）"></a>6、Go-Agent（Pipeline在哪里运行呢？）</h3><p>Go-Agent是GoCD生态系统的Workers。一个系统可以配置多个Go-Agent，但只有一个Go-Server。</p>
+<p>Go-Server  : 是控制一切的服务器，提供用户界面，轮询Material是否有更改，分配相应的作业到各个Agent。其不会运行任何命令和进行部署。</p>
+<p>Go-Agent : 执行具体工作的实施者，其执行由系统用户或管理员分配的任何工作。</p>
+<p>当Job分配至Agent时，Agent会执行Job内的Task，并传递Job状态给Go-Server。因为Job可并行运行，所以其可分配至不同的Go-Agent，Go-Server会收集所有不同Job的状态信息，然后确定Stage状态。</p>
+<h3 id="7、Resources（增强Agent和Jobs）"><a href="#7、Resources（增强Agent和Jobs）" class="headerlink" title="7、Resources（增强Agent和Jobs）"></a>7、Resources（增强Agent和Jobs）</h3><p>使用Resources可以增强Agent和Jobs。Resources是自由格式的标签，用于帮助Agent决定哪些Agent可以执行特定的Job。</p>
+<ul>
+<li>Resources由管理员自定义的，可以表示任何含义。其就是一个自定义标签，用于设定Agent和Job关系。</li>
+<li>对Job分配Resources十分有用。若Job分配了Resource，则在Agent中就必须包含此Resource，这样才可成功运行此Job。</li>
+<li>不需要Resource的Job，可以在任何Agent上被成功执行；但分配了Resource的Job，必须在包含此Resource的Agent才能成功执行。</li>
+</ul>
+<img src="https://docs.gocd.org/current/images/concepts/19_agents_jobs_resources.png" alt="19_agents_jobs_resources" style="zoom:25%;" />
+
+<p>假设：</p>
+<p>Job1 需要 Firefox Resource，Job2 需要 Linux Resource，Job3 需要Firefox和Linux Resource，Job4 不需要Resource。</p>
+<p>Agent1 具有 Firefox和Linux Resource，Agent2 没有 Resource，Agent3 具有Firefox和Apple Resource。</p>
+<p>因此：</p>
+<ol>
+<li>Job1 只能分给带有Firefox Resource的Agent1或Agent3</li>
+<li>Job2 只能分给Agent1</li>
+<li>Job3 只能分给Agent1</li>
+<li>Job4 可以给任一Agent</li>
+</ol>
+<p>Agent 3具有Apple Resource这一事实并不会阻止其被分配作业。即使其是未被使用的Resource。</p>
+<h3 id="8、Environments（用于组合Pipeline和Agent的标签）"><a href="#8、Environments（用于组合Pipeline和Agent的标签）" class="headerlink" title="8、Environments（用于组合Pipeline和Agent的标签）"></a>8、Environments（用于组合Pipeline和Agent的标签）</h3><p>Environments 是GoCD中一种对Pipeline和Agent进行关联的方式。其规则：</p>
+<ul>
+<li>一个Pipeline最多只能关联一个Environments （0-1）</li>
+<li>一个Agent可以与多个Environments关联，也可以与任何Environments都不关联 （0-n）</li>
+<li>Agent只会被分配在同一Environments的Pipeline的Job</li>
+<li>与任何Environments都不关联的Agent，只能执行与任何Environments都不关联的Pipeline。</li>
+</ul>
+<img src="https://docs.gocd.org/current/images/concepts/22_environment.png" alt="22_environment" style="zoom:28%;" />
+
+<p>如图：</p>
+<ol>
+<li>Pipeline1 ，2的Job只能由Agent1，2，3执行。</li>
+<li>Pipeline3，4的Job只能由Agent3，4执行。</li>
+<li>Pipeline5，6的Job只能由Agent5执行。</li>
+</ol>
+<p>Environments和Resources可以同时在Agent和Pipeline(Environments)/Job(Resources)匹配。</p>
+<h3 id="9、Environment-Variables-（用于Task使用）"><a href="#9、Environment-Variables-（用于Task使用）" class="headerlink" title="9、Environment Variables （用于Task使用）"></a>9、Environment Variables （用于Task使用）</h3><p>Environment Variables 与 Environments 没有直接关系。</p>
+<ul>
+<li>环境变量是在配置中自定义的变量。其用于Task，与操作系统运行中使用的环境变量类似。</li>
+<li>环境变量可以被定义多个层级，由外至内为：Environments-&gt;Pipeline-&gt;Stage-&gt;Job。</li>
+<li>遵循级联系统，外层定义的若在内层也定义了，则会被内层变量值覆盖。若外层定义，而内层未定义，则会传递至内层Job。</li>
+</ul>
+<img src="https://docs.gocd.org/current/images/concepts/23_env_vars.png" alt="23_env_vars" style="zoom:28%;" />
+
+<p>如图，在Jon中各环境变量值分别为：</p>
+<p>ENV_ENV = 1</p>
+<p>ENV_PIP = 2</p>
+<p>ENV_STG = 3</p>
+<p>ENV_JOB = 4</p>
+<p>MY_VAR = 4</p>
+<h3 id="10、-Templates（可重用的工作流）"><a href="#10、-Templates（可重用的工作流）" class="headerlink" title="10、 Templates（可重用的工作流）"></a>10、 Templates（可重用的工作流）</h3><p>Templates 用于创建可重用的工作流，其目的在于：简化创建和维护分支以及管理大量Pipelines等任务。在Admin菜单的Template可以管理Pipeline Templates。</p>
+<h2 id="二、来来来，创建一个属于自己的Pipeline"><a href="#二、来来来，创建一个属于自己的Pipeline" class="headerlink" title="二、来来来，创建一个属于自己的Pipeline"></a>二、来来来，创建一个属于自己的Pipeline</h2><p>万事开头难，若要使用GoCD，必须要先拥有它。若要GoCD正常工作，必须要有Go-Server和至少一个Go-Agent。</p>
+<h3 id="1、Docker启动Go-Server和Go-Agent"><a href="#1、Docker启动Go-Server和Go-Agent" class="headerlink" title="1、Docker启动Go-Server和Go-Agent"></a>1、Docker启动Go-Server和Go-Agent</h3><ul>
+<li>拉取go-serverv20.1.0 镜像： <code>docker pull gocd/gocd-server:v20.1.0</code></li>
+<li>启动go-server: <code>docker run -d --name=&quot;go-server-v20.1.0&quot; -p 8153:8153 -v &lt;root-path&gt;/docker/go-server/godata:/godata gocd/gocd-server:v20.1.0</code></li>
+<li>拉取go-serverv20.1.0 镜像： <code>docker pull gocd/gocd-agent-ubuntu-16.04:v20.1.0</code></li>
+<li>启动Go-agent: 前提是go-server也在docker容器内运行，则可以使用：<code>docker run -d -e GO_SERVER_URL=http://$(docker inspect --format=&#39;&#123;&#123;(index (index.NetworkSettings.IPAddress))&#125;&#125;&#39; go-server-v20.1.0):8153/go gocd/gocd-agent-ubuntu-16.04:v20.1.0</code></li>
+</ul>
+<h3 id="2、创建Pipeline"><a href="#2、创建Pipeline" class="headerlink" title="2、创建Pipeline"></a>2、创建Pipeline</h3><ol>
+<li>本地运行后，浏览器打开localhost:8153进入主页；若在服务器运行，也是对应服务器IP的8153端口。</li>
+<li>选择Materials类型Git，输入git仓地址（示例的demo的git仓http地址,若pipeline的Material为另一个pipeline，则更换类型进行选择即可）。输入定义的Pipeline名字，Stage名字，并定义一个Job：执行./build脚本。</li>
+</ol>
+<p>7314 </p>
+<ol start="3">
+<li>点击Save+Run this Pipeline，会进行跳转，并运行此Pipeline。</li>
+</ol>
+<p>7488 </p>
+<ol start="4">
+<li>待运行成功后，进度会变成绿色。点击小齿轮，可进入设置页面。</li>
+</ol>
+<p>7646 </p>
+<p>在其中就可以设置Resources，Environment variable，Artifacts。也可以在Pipeline设置中增加Stage，在Stage设置中增加Job，在Job设置中增加Tasks。</p>
+<p>更多有关GoCD细节操作可查看官方文档~<br><strong>reference:</strong> <a target="_blank" rel="noopener" href="https://docs.gocd.org/current/">https://docs.gocd.org/current/</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Dragon</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://dragonwang-hub.github.io/2021/01/16/gocd-get-started/">https://dragonwang-hub.github.io/2021/01/16/gocd-get-started/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Dragon</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/GoCD/">
+                                    <span class="chip bg-color">GoCD</span>
+                                </a>
+                            
+                                <a href="/tags/CI-CD/">
+                                    <span class="chip bg-color">CI/CD</span>
+                                </a>
+                            
+                                <a href="/tags/Pipeline/">
+                                    <span class="chip bg-color">Pipeline</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%83%A8%E7%BD%B2/">
+                                    <span class="chip bg-color">部署</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/02/20/plantuml-xiao-bai-jian-yi-gong-lue/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="PlantUML 小白简易攻略">
+                        
+                        <span class="card-title">PlantUML 小白简易攻略</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech-Tools/" class="post-category">
+                                    Tech Tools
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PlantUML/">
+                        <span class="chip bg-color">PlantUML</span>
+                    </a>
+                    
+                    <a href="/tags/C4-modal/">
+                        <span class="chip bg-color">C4 modal</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%98%E5%9B%BE%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">绘图工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/01/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Hexo Quick Start">
+                        
+                        <span class="card-title">Hexo Quick Start</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Help/" class="post-category">
+                                    Help
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/Blog/">
+                        <span class="chip bg-color">Blog</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.5'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Dragon Wang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">20.3k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/dragonwang-hub" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ylwang9627@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://blog.nowcoder.net/dragonzone" class="tooltipped" target="_blank" data-tooltip="牛客: https://blog.nowcoder.net/dragonzone" data-position="top" data-delay="50">
+        <i class="fas fa-bowling-ball"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
