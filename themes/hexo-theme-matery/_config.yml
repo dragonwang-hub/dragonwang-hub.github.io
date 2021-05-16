@@ -139,9 +139,10 @@ socialLink:
   email: ylwang9627@foxmail.com
   facebook: # https://www.facebook.com/xxx
   twitter: # https://twitter.com/xxx
-  qq: # 915614879
+  qq: # 91 
   weibo: # https://weibo.com/xxx
-  zhihu: # https://www.zhihu.com/xxx
+  zhihu:  # https://www.zhihu.com/xxx
+  nowcoder: https://blog.nowcoder.net/dragonzone
   rss: false # true、false
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
