@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="GoCD Get Started, Dragon.Wang&#39;Zone">
+    <meta name="keywords" content="Clean-Code之注释, Dragon.Wang&#39;Zone">
     <meta name="description" content="将进酒，杯莫停。与君歌一曲，请君为我倾耳听。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>GoCD Get Started | Dragon.Wang&#39;Zone</title>
+    <title>Clean-Code之注释 | Dragon.Wang&#39;Zone</title>
     <link rel="icon" type="image/png" href="/dragon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -288,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">GoCD Get Started</h1>
+                    <h1 class="description center-align post-title">Clean-Code之注释</h1>
                 </div>
             </div>
         </div>
@@ -409,20 +409,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/GoCD/">
-                                <span class="chip bg-color">GoCD</span>
+                            <a href="/tags/Clean-Code/">
+                                <span class="chip bg-color">Clean Code</span>
                             </a>
                         
-                            <a href="/tags/CI-CD/">
-                                <span class="chip bg-color">CI/CD</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
-                            <a href="/tags/Pipeline/">
-                                <span class="chip bg-color">Pipeline</span>
+                            <a href="/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81-%E8%A7%84%E8%8C%83/">
+                                <span class="chip bg-color">代码整洁/规范</span>
                             </a>
                         
-                            <a href="/tags/%E9%83%A8%E7%BD%B2/">
-                                <span class="chip bg-color">部署</span>
+                            <a href="/tags/%E6%B3%A8%E9%87%8A/">
+                                <span class="chip bg-color">注释</span>
                             </a>
                         
                     </div>
@@ -433,8 +433,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/DevOps/" class="post-category">
-                                DevOps
+                            <a href="/categories/Tech-Improvement/" class="post-category">
+                                Tech Improvement
                             </a>
                         
                     </div>
@@ -446,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-16
+                    2021-05-23
                 </div>
                 
 
@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    7 分
                 </div>
                 
 
@@ -485,144 +485,99 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="GoCD萌新入门之路"><a href="#GoCD萌新入门之路" class="headerlink" title="GoCD萌新入门之路"></a>GoCD萌新入门之路</h1><blockquote>
-<p>因本文首次发布在牛客网，故而部分图片外链无法显示。可直接通过下方链接跳转牛客网查看。<br>Refer：<a target="_blank" rel="noopener" href="https://blog.nowcoder.net/n/b800102df5354174b17819da225c4445">https://blog.nowcoder.net/n/b800102df5354174b17819da225c4445</a></p>
+                <h1 id="Clean-Code之注释"><a href="#Clean-Code之注释" class="headerlink" title="Clean Code之注释"></a>Clean Code之注释</h1><p>在很多源码中，注释常常与代码相伴而行。有的作为作者信息声明，有的作为程序逻辑解读，有的作为更改时间记录。或多或少都是留下注释的痕迹。<br>在初学编程之际，一把梭的编程手法，总是会让观者无法理解具体含义，往往就采用了注释的方法在各行各处声明所书写代码的含义。</p>
+<h2 id="为什么要用注释"><a href="#为什么要用注释" class="headerlink" title="为什么要用注释"></a>为什么要用注释</h2><p>随着渐渐地深入学习，也听到那句“代码即注释”的名言。相信大部分读者都听过这么一句。<br>那么注释是否是真的就没有必要性呢？我们可以看下下面这段关于公平锁和非公平锁实现源码中的核心差异代码。不能说有注释就好，但确实使读者对代码的理解更加容易。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">hasQueuedPredecessors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// The correctness of this depends on head being initialized</span>
+    <span class="token comment">// before tail and on head.next being accurate if the current</span>
+    <span class="token comment">// thread is first in queue.</span>
+    <span class="token class-name">Node</span> t <span class="token operator">=</span> tail<span class="token punctuation">;</span> <span class="token comment">// Read fields in reverse initialization order</span>
+    <span class="token class-name">Node</span> h <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    <span class="token class-name">Node</span> s<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> h <span class="token operator">!=</span> t <span class="token operator">&amp;&amp;</span>
+        <span class="token punctuation">(</span><span class="token punctuation">(</span>s <span class="token operator">=</span> h<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> s<span class="token punctuation">.</span>thread <span class="token operator">!=</span> <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>但是，如果能把<code>t</code>,<code>h</code>,<code>s</code>赋予合适有意义的命名，或者这段代码就可以删减其注释。关于如何更好的命名，读者可查看第一集内容“Clean Code之命名”。</p>
+<p>好的注释必然有用，但往往注释会乱七八糟，会随着时间变得失效、错误。<br>所以，我们更该用尽心思去编写好的代码，以保证无需编写多余的注释。</p>
+<blockquote>
+<p>若编程语言足够有表达力，或者我们长于用这些语言来表达意图，就不那么需要注释——也许根本不需要。</p>
+<p>在程序中，代码是唯一真正准确的表达信息来源。只有代码能忠实的告诉你它做的事。</p>
 </blockquote>
-<hr> 
+<p>如果说到为什么要写注释的原由？有时，代码不足以解释其自身的行为，则需要注释进行补充说明。比如</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// check to see if the employee is eligible for full benefits</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>employee<span class="token punctuation">.</span>flags <span class="token operator">&amp;</span> HOURLY_FLAG<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>employee<span class="token punctuation">.</span>age <span class="token operator">></span> <span class="token number">65</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="一、啊，什么是GoCD呀"><a href="#一、啊，什么是GoCD呀" class="headerlink" title="一、啊，什么是GoCD呀"></a>一、啊，什么是GoCD呀</h2><p>首先，需要了解一下传统的集成方式，在传统的集成方式中，团队中每天上班拉取代码，下班前merge代码。若出现code conflict，大概率是大面积的code冲突，解决冲突便会花费超多时间，并且在传统方式中若不采取CI工具，也不能保证每次代码的提交的功能都是完整且不影响原有功能，一旦出现构建失败，不能及时发现也是其存在的问题。因此传统的集成方式存在很大的缺陷。</p>
-<p>CI/CD就此出世。持续集成使用自动化工具协助开发团队，在每次merge代码后，尽可能无缝式的构建和测试代码。其主要流程包括：</p>
-<ul>
-<li>小步提交功能代码</li>
-<li>代码必须配备单元测试</li>
-<li>每次提交会自动触发CI server, 其开始执行Build -&gt; Test -&gt; Package -&gt; Deploy Dev Env任务</li>
-<li>无论任务成功与否，都能及时给予团队反馈</li>
-</ul>
-<p>持续交付是基于持续集成实现的，其流水线的各步骤和代码的部署集成都是自动的，只是在需要发布产品时候手动发布即可。在整个CD过程中还包含了monitoring, alarm, log and other tools组成实现反馈闭环系统以保证发布产品的可靠性。</p>
-<p>持续部署与持续交付的区别仅在于，持续部署在不同环境下对产品的发布都是自动的，也就是在提交代码后，若不存在问题，其会自动发布生产版本。其目的就在于使用此方式，在任何时候，代码都是可直接发布至生产阶段的。</p>
-<p><strong>GoCD</strong>-一个开源的持续集成和持续交付（CI/CD）系统。</p>
-<p>CI/CD 是一种通过在应用开发阶段引入自动化来频繁向客户交付应用的方法。CI/CD 的核心概念是持续集成、持续交付和持续部署。没必要纠结其具体语义概念，CI/CD就是一个流程，用于实现应用开发中的高度持续自动化和持续监控。</p>
-<h3 id="1、Pipeline、Stage、Job、Task"><a href="#1、Pipeline、Stage、Job、Task" class="headerlink" title="1、Pipeline、Stage、Job、Task"></a>1、Pipeline、Stage、Job、Task</h3><p>Pipeline、Stage、Job、Task依次为组合关系。一个Pipeline由多个Stage组成，Stage由Job组成，Job由Task组成。</p>
-<p>1004 </p>
-<ul>
-<li>Task：是Pipeline中最小单位。需要执行的操作，通常是一个指令。eg: ./build</li>
-<li>Job: 由一系列<strong>有序</strong>task组成。一般，若某task失败，Job也将停止（除非有指定）。其中的Task对environment variable的操作不会影响其他Task，但对文件系统的操作会影响其他tasks。</li>
-<li>Stage: 由一系列<strong>并行</strong>的Job组成。其内的Jobs各自独立，可以并行执行。若某个Job失败，其他Jobs依然会继续运行，但当前Stage会被认为失败。</li>
-<li>Pipeline: 由一系列<strong>有序</strong>Stage组成，若某个Stage失败，Pipeline则失败，其后所有Stage都不会Start。</li>
-</ul>
-<h3 id="2、Materials-and-triggers-何时Pipeline会开始运行？"><a href="#2、Materials-and-triggers-何时Pipeline会开始运行？" class="headerlink" title="2、Materials and triggers (何时Pipeline会开始运行？)"></a>2、Materials and triggers (何时Pipeline会开始运行？)</h3><p>Material 是Pipeline运行的一个基础。其通常是源代码材料仓（git,svn,mercurial,etc.），也可以是other Pipeline的Stage。</p>
-<ul>
-<li><p>GoCD Server 会不断的轮询Pipeline配置的Materials。当发现Materials有新的改变或提交时，Pipeline就会运行或被触发。</p>
-</li>
-<li><p>“time trigger” 是一种特殊Material，可以在指定的时间或指定时间间隔触发Pipeline。</p>
-</li>
-<li><p>Pipeline可以配置多个Materials，当任一Material有变化或提交都会触发Pipeline。</p>
-</li>
-</ul>
-<p>1785</p>
-<p><strong>Pipeline 作为 Material</strong></p>
-<p>当Pipeline的一个Stage被用为另一个Pipeline的Material时，Material作用才更加突出。</p>
-<p>如图：FirstPipeline的STAHE2时SecondPipeline的Material，当FirstPipeline的STAHE2执行完成后，即触发SecondPipeline开始运行。</p>
-<p>FirstPipeline则称为Upstream Pipeline。</p>
-<p>SecondPipeline称为DownStream Pipeline。</p>
-<p>FirstPipeline的STAHE2被称为SecondPipeline的上游依赖。</p>
-<p>2200 </p>
-<p>Pipeline的任何Stage都可以作为Material，Stage运行完成即可触发新的Pipeline，不在乎其所在的Pipeline中后面的Stage是否成功。</p>
-<h3 id="3、Fan-out-and-Fan-in-扇出和扇入"><a href="#3、Fan-out-and-Fan-in-扇出和扇入" class="headerlink" title="3、Fan-out and Fan-in (扇出和扇入)"></a>3、Fan-out and Fan-in (扇出和扇入)</h3><p>Fan-out 和 Fan-in是一个执行动作。</p>
-<p>Fan-out: 当Material的完成，造成多个Downstream Pipeline被触发。该Material被称作Fan-out至Downstream Pipeline。即，由材料完成后，发散至多个下游Pipeline（1-&gt;多）。Fan-out的原因不一定总与Pipeline系系相关，可以是任何Material。</p>
-<p>Fan-in: 指需要多种Upstream material 去触发Downstream Pipeline(多-&gt;1)。在GoCD中，其最重要一点在于必须在触发下游Pipeline前保证上游所有的material的版本一致。</p>
-<p>2747</p>
-<p>如上图所示，一个git仓作为Pipeline1和Pipeline2的material，此可称为Fan-out。而Pipeline1的Stage2和Pipeline2的Stage1可作为Pipeline3的material，此为Fan-in，若Pipeline1的Stage2慢于Pipeline2的Stage1，则Pipeline3会等待Pipeline Stage2的完成。多material情况下，必须保证每个material的版本是一致的，否则不会构建。</p>
-<h3 id="4、Value-Stream-Map（VSM：价值流图）"><a href="#4、Value-Stream-Map（VSM：价值流图）" class="headerlink" title="4、Value Stream Map（VSM：价值流图）"></a>4、Value Stream Map（VSM：价值流图）</h3><p>VSM：是整个Pipeline的上游依存关系和触发的下游Pipeline的端到端视图。在决定触发哪些Pipeline时，GoCD的Fan-out和Fan-in方法将处理所有的依赖关系。</p>
-<p>3206 </p>
-<p>VSM，可以抽象的展示整个Pipeline的完整过程，从构建到生产。这是建模的抽象级别，可以直接展示端到端的工作流。其中也展示了一次构建Artifact并通过管道传播。并且在此图中展示了并行化的工作流程。正因为其展示了整个Pipeline，所以其可以提供提交到生产的审核性和可追溯性。</p>
-<h3 id="5、Artifacts（Pipeline内或之间有文件传递怎么办？）"><a href="#5、Artifacts（Pipeline内或之间有文件传递怎么办？）" class="headerlink" title="5、Artifacts（Pipeline内或之间有文件传递怎么办？）"></a>5、Artifacts（Pipeline内或之间有文件传递怎么办？）</h3><p>GoCD中的每个Job都可以发布Artifacts。Artifacts可以使文件或者文件夹。</p>
-<p>Job运行后，GoCD会确保Job指定的Artifact被发布并可被用户或者下游stage和pipeline使用。</p>
-<p>一个Job可以发布多个Artifact。</p>
-<p>类型：</p>
-<p>Build Artifact：用于安装的程序，二进制文件，文档等。</p>
-<p>Test Artifact：GoCD会尝试将文件解析为测试报告。</p>
-<p><strong>如何获取Artifact</strong></p>
-<p>GoCD提供一个指定任务“<strong>Fetch Artifact Task</strong>”，用于从任意祖先Pipeline（当前Pipeline的上流即可）获取和使用Artifact。GoCD会确保获取的Artifact版本是正确的。</p>
-<p>3846</p>
-<p>如图所示，Pipeline1发布了很多Artifacts，在Pipeline1/Stage2/Job1中的<strong>Fetch Artifact Task</strong>获取了其Stage1发布的文件。</p>
-<p>在Pipeline2中获取了Pipeline1/Stage2/Job1发布的文件。Pipeline3中获取了Pipeline1/Stage1/Job2发布的文件夹（祖先-&gt;孙）。</p>
-<h3 id="6、Go-Agent（Pipeline在哪里运行呢？）"><a href="#6、Go-Agent（Pipeline在哪里运行呢？）" class="headerlink" title="6、Go-Agent（Pipeline在哪里运行呢？）"></a>6、Go-Agent（Pipeline在哪里运行呢？）</h3><p>Go-Agent是GoCD生态系统的Workers。一个系统可以配置多个Go-Agent，但只有一个Go-Server。</p>
-<p>Go-Server  : 是控制一切的服务器，提供用户界面，轮询Material是否有更改，分配相应的作业到各个Agent。其不会运行任何命令和进行部署。</p>
-<p>Go-Agent : 执行具体工作的实施者，其执行由系统用户或管理员分配的任何工作。</p>
-<p>当Job分配至Agent时，Agent会执行Job内的Task，并传递Job状态给Go-Server。因为Job可并行运行，所以其可分配至不同的Go-Agent，Go-Server会收集所有不同Job的状态信息，然后确定Stage状态。</p>
-<h3 id="7、Resources（增强Agent和Jobs）"><a href="#7、Resources（增强Agent和Jobs）" class="headerlink" title="7、Resources（增强Agent和Jobs）"></a>7、Resources（增强Agent和Jobs）</h3><p>使用Resources可以增强Agent和Jobs。Resources是自由格式的标签，用于帮助Agent决定哪些Agent可以执行特定的Job。</p>
-<ul>
-<li>Resources由管理员自定义的，可以表示任何含义。其就是一个自定义标签，用于设定Agent和Job关系。</li>
-<li>对Job分配Resources十分有用。若Job分配了Resource，则在Agent中就必须包含此Resource，这样才可成功运行此Job。</li>
-<li>不需要Resource的Job，可以在任何Agent上被成功执行；但分配了Resource的Job，必须在包含此Resource的Agent才能成功执行。</li>
-</ul>
-<img src="https://docs.gocd.org/current/images/concepts/19_agents_jobs_resources.png" alt="19_agents_jobs_resources" style="zoom:25%;" />
+<p>但是，若是使用代码也可达成同样的效果，解释代码的意图。例如：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span>employee<span class="token punctuation">.</span><span class="token function">isEligibleForFullBenefits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>假设：</p>
-<p>Job1 需要 Firefox Resource，Job2 需要 Linux Resource，Job3 需要Firefox和Linux Resource，Job4 不需要Resource。</p>
-<p>Agent1 具有 Firefox和Linux Resource，Agent2 没有 Resource，Agent3 具有Firefox和Apple Resource。</p>
-<p>因此：</p>
+<blockquote>
+<p>写注释的常见动机之一是糟糕的代码的存在，编写模块后发现代码并不能清晰让人理解其所做所为，因此才需要注释来解释并不尽人意的代码。</p>
+</blockquote>
+<p>本文结合《Clean Code》注释章节和《Alibaba Java 开发手册》部分内容，总结书写注释常见问题及何为好注释。</p>
+<h2 id="什么是坏注释"><a href="#什么是坏注释" class="headerlink" title="什么是坏注释"></a>什么是坏注释</h2><p>如上所述，坏注释常常会出现我们并不在意的地点。比如：毫无意义的注释、因时间太久已经失效的注释、用于记录更新的注释、为了注释而注释的注释等等。<br>本节对常见坏注释进行总结，以警示坏注释出现的场合。</p>
 <ol>
-<li>Job1 只能分给带有Firefox Resource的Agent1或Agent3</li>
-<li>Job2 只能分给Agent1</li>
-<li>Job3 只能分给Agent1</li>
-<li>Job4 可以给任一Agent</li>
+<li><strong>毫无作用的注释</strong>：比如所书写的注释并<strong>不能提供比代码本身更多的信息</strong>；亦或者注释表述不清晰，更多只是为了提醒书写者自身；亦或者本身注释就是为了注释而已。</li>
 </ol>
-<p>Agent 3具有Apple Resource这一事实并不会阻止其被分配作业。即使其是未被使用的Resource。</p>
-<h3 id="8、Environments（用于组合Pipeline和Agent的标签）"><a href="#8、Environments（用于组合Pipeline和Agent的标签）" class="headerlink" title="8、Environments（用于组合Pipeline和Agent的标签）"></a>8、Environments（用于组合Pipeline和Agent的标签）</h3><p>Environments 是GoCD中一种对Pipeline和Agent进行关联的方式。其规则：</p>
-<ul>
-<li>一个Pipeline最多只能关联一个Environments （0-1）</li>
-<li>一个Agent可以与多个Environments关联，也可以与任何Environments都不关联 （0-n）</li>
-<li>Agent只会被分配在同一Environments的Pipeline的Job</li>
-<li>与任何Environments都不关联的Agent，只能执行与任何Environments都不关联的Pipeline。</li>
-</ul>
-<img src="https://docs.gocd.org/current/images/concepts/22_environment.png" alt="22_environment" style="zoom:28%;" />
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 例如：以下注释毫无作用</span>
+<span class="token comment">// logger name</span>
+<span class="token keyword">protected</span> <span class="token class-name">String</span> logName <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 
-<p>如图：</p>
-<ol>
-<li>Pipeline1 ，2的Job只能由Agent1，2，3执行。</li>
-<li>Pipeline3，4的Job只能由Agent3，4执行。</li>
-<li>Pipeline5，6的Job只能由Agent5执行。</li>
-</ol>
-<p>Environments和Resources可以同时在Agent和Pipeline(Environments)/Job(Resources)匹配。</p>
-<h3 id="9、Environment-Variables-（用于Task使用）"><a href="#9、Environment-Variables-（用于Task使用）" class="headerlink" title="9、Environment Variables （用于Task使用）"></a>9、Environment Variables （用于Task使用）</h3><p>Environment Variables 与 Environments 没有直接关系。</p>
-<ul>
-<li>环境变量是在配置中自定义的变量。其用于Task，与操作系统运行中使用的环境变量类似。</li>
-<li>环境变量可以被定义多个层级，由外至内为：Environments-&gt;Pipeline-&gt;Stage-&gt;Job。</li>
-<li>遵循级联系统，外层定义的若在内层也定义了，则会被内层变量值覆盖。若外层定义，而内层未定义，则会传递至内层Job。</li>
-</ul>
-<img src="https://docs.gocd.org/current/images/concepts/23_env_vars.png" alt="23_env_vars" style="zoom:28%;" />
+<span class="token comment">// default constructor</span>
+<span class="token keyword">protected</span> <span class="token class-name">AnnualDataRule</span>
+  
+<span class="token comment">//</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">loadProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token comment">// this comment is used to remind me to implement handle exception if necessary</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>如图，在Jon中各环境变量值分别为：</p>
-<p>ENV_ENV = 1</p>
-<p>ENV_PIP = 2</p>
-<p>ENV_STG = 3</p>
-<p>ENV_JOB = 4</p>
-<p>MY_VAR = 4</p>
-<h3 id="10、-Templates（可重用的工作流）"><a href="#10、-Templates（可重用的工作流）" class="headerlink" title="10、 Templates（可重用的工作流）"></a>10、 Templates（可重用的工作流）</h3><p>Templates 用于创建可重用的工作流，其目的在于：简化创建和维护分支以及管理大量Pipelines等任务。在Admin菜单的Template可以管理Pipeline Templates。</p>
-<h2 id="二、来来来，创建一个属于自己的Pipeline"><a href="#二、来来来，创建一个属于自己的Pipeline" class="headerlink" title="二、来来来，创建一个属于自己的Pipeline"></a>二、来来来，创建一个属于自己的Pipeline</h2><p>万事开头难，若要使用GoCD，必须要先拥有它。若要GoCD正常工作，必须要有Go-Server和至少一个Go-Agent。</p>
-<h3 id="1、Docker启动Go-Server和Go-Agent"><a href="#1、Docker启动Go-Server和Go-Agent" class="headerlink" title="1、Docker启动Go-Server和Go-Agent"></a>1、Docker启动Go-Server和Go-Agent</h3><ul>
-<li>拉取go-serverv20.1.0 镜像： <code>docker pull gocd/gocd-server:v20.1.0</code></li>
-<li>启动go-server: <code>docker run -d --name=&quot;go-server-v20.1.0&quot; -p 8153:8153 -v &lt;root-path&gt;/docker/go-server/godata:/godata gocd/gocd-server:v20.1.0</code></li>
-<li>拉取go-serverv20.1.0 镜像： <code>docker pull gocd/gocd-agent-ubuntu-16.04:v20.1.0</code></li>
-<li>启动Go-agent: 前提是go-server也在docker容器内运行，则可以使用：<code>docker run -d -e GO_SERVER_URL=http://$(docker inspect --format=&#39;&#123;&#123;(index (index.NetworkSettings.IPAddress))&#125;&#125;&#39; go-server-v20.1.0):8153/go gocd/gocd-agent-ubuntu-16.04:v20.1.0</code></li>
-</ul>
-<h3 id="2、创建Pipeline"><a href="#2、创建Pipeline" class="headerlink" title="2、创建Pipeline"></a>2、创建Pipeline</h3><ol>
-<li>本地运行后，浏览器打开localhost:8153进入主页；若在服务器运行，也是对应服务器IP的8153端口。</li>
-<li>选择Materials类型Git，输入git仓地址（示例的demo的git仓http地址,若pipeline的Material为另一个pipeline，则更换类型进行选择即可）。输入定义的Pipeline名字，Stage名字，并定义一个Job：执行./build脚本。</li>
+<ol start="2">
+<li> <strong>误导性注释</strong>：其实很多时候，由于需求变更或者产品迭代升级导致代码被大幅修改，而在之前遗留的注释却没有同步更新或删除，那么<strong>遗留的注释</strong>会产生误导性作用导致读者无法理解<strong>代码与注释思想不对等</strong>的情况。这种时常发生，所以，读者应当注意，若无法书写准确无误的注释并及时更新，应主动避免书写注释的现象。</li>
+<li><strong>为了注释而注释的注释</strong>：代码中本<strong>不需对每个变量和方法都书写注释</strong>，例如有些要求每个函数都要有Javadoc，这只会使程序更加难以阅读。也许你也曾遇到类似于<strong>日志型注释</strong>或者用于<strong>归属与署名的注释</strong>，即每次有同事更新此段代码时，都会在代码内部添加一条注释记录此次修改的人员和内容，这也许在上古时代还有一定必要性，现在的程序已经使用了源码版本控制系统（比如git、svn），因此现在不再需要这样的注释。</li>
 </ol>
-<p>7314 </p>
-<ol start="3">
-<li>点击Save+Run this Pipeline，会进行跳转，并运行此Pipeline。</li>
-</ol>
-<p>7488 </p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// user name</span>
+<span class="token keyword">private</span> <span class="token class-name">String</span> userName<span class="token punctuation">;</span>
+<span class="token comment">// user age</span>
+<span class="token keyword">private</span> <span class="token class-name">String</span> userAge<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol start="4">
-<li>待运行成功后，进度会变成绿色。点击小齿轮，可进入设置页面。</li>
+<li> <strong>括号后的注释</strong>：有时候，当函数过长时，为了更清楚显眼的找到代码块的结尾，会使用在右括号后增加代码注释的形式，比如<code>// if 、 // while</code>等待形式。那么当出现这类情况时，应当如何呢？当时<strong>思考如何书写更优雅的函数</strong>，让每个函数都更有意义。若不懂如何更好的书写函数，可查看本系列第二季“Clean Code之函数”。</li>
+<li> <strong>注释掉的代码</strong>：不需保留，请删除请删除请删除。</li>
+<li> <strong>与代码无关的注释</strong>：比如注释与函数毫无干系，并未描述当前函数，可能描述的是整个业务模块。或者注释描述及其不清晰，仍需细读代码结合注释才能理解业务。</li>
+<li> <strong>函数头的注释</strong>：当你需要为一个函数头书写注释的时候，你更应该思考，如何为只做一件事的函数书写一个更优雅的名字。</li>
 </ol>
-<p>7646 </p>
-<p>在其中就可以设置Resources，Environment variable，Artifacts。也可以在Pipeline设置中增加Stage，在Stage设置中增加Job，在Job设置中增加Tasks。</p>
-<p>更多有关GoCD细节操作可查看官方文档~<br><strong>reference:</strong> <a target="_blank" rel="noopener" href="https://docs.gocd.org/current/">https://docs.gocd.org/current/</a></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// get user name</span>
+<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">gun</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getUserName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>也许读者会纳闷，为什么直接先讲些坏注释的示例呢？<br>当你看到以上总结时，你会或多或少看到自己曾经的影子，比如作者曾经常书写括号后的注释，并且很少删除注释掉的代码。那么通过反思自身就会更感受到好注释的优点。</p>
+<h2 id="什么是好注释"><a href="#什么是好注释" class="headerlink" title="什么是好注释"></a>什么是好注释</h2><p>了解了以上几类坏注释出现的场景，我们一起看看《Clean Code》中对好注释的场景总结。<br>好的注释必然首先是有意义的，值得去书写的。</p>
+<blockquote>
+<p>唯一真正好的做法仍旧是想方设法不书写注释。</p>
+</blockquote>
+<ol>
+<li><strong>法律信息相关注释</strong>：有时，为保证权益，需要书写法律相关的注释。其不需将具体法律条律内容书写出来，只将注释内容指向标准许可或其他外部文档即可。</li>
+<li><strong>解释性注释</strong>：不仅将难以理解的内容翻译成某种可读的形式，还对此代码实现的意图进行解释。这样的注释更易让读者清晰明确书写者的目的和起因。但也不是必要的。</li>
+<li><strong>用于警示或放大作用的注释</strong>：当代码对系统极其重要，可设立警示型代码提示代码改动可能出现的结果是有必要性的，或者用注释去放大这部分代码的重要性也是可性的。</li>
+<li><strong>TODO注释</strong>：常见的注释，定期查看，删除不需要的即可。</li>
+</ol>
+<p>经过简单的分析，我们其实也可以发现，非必要情况，一定一定不要使用注释是十分重要的。注释并不能美化糟糕的代码。所以，我们在编写代码时，更应考虑的是如何减少注释量，保证“代码即注释”。</p>
+<blockquote>
+<p>什么也比不上放置良好的注释来得有用。什么也不会比乱七八糟的注释更有本事捣乱一个模块。什么也不会比陈旧、提供错误信息的注释更有破坏性。</p>
+</blockquote>
+<p>希望本文可以提示读者，从现在开始，反思之前的坏注释，考虑之后相同场景如何避免注释，为书写好的注释做好理论基础。</p>
+<p><strong>Reference</strong></p>
+<ol>
+<li><p>《Clean Code》</p>
+</li>
+<li><p>《Java 开发手册》：<a target="_blank" rel="noopener" href="https://github.com/alibaba/p3c/blob/master/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%EF%BC%88%E5%B5%A9%E5%B1%B1%E7%89%88%EF%BC%89.pdf">https://github.com/alibaba/p3c/blob/master/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%EF%BC%88%E5%B5%A9%E5%B1%B1%E7%89%88%EF%BC%89.pdf</a></p>
+</li>
+</ol>
 
                 
             </div>
@@ -649,7 +604,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dragonwang-hub.github.io/2021/01/16/gocd-get-started/">https://dragonwang-hub.github.io/2021/01/16/gocd-get-started/</a>
+                    <a href="https://dragonwang-hub.github.io/2021/05/23/clean-code-zhi-zhu-shi/">https://dragonwang-hub.github.io/2021/05/23/clean-code-zhi-zhu-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -687,20 +642,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/GoCD/">
-                                    <span class="chip bg-color">GoCD</span>
+                                <a href="/tags/Clean-Code/">
+                                    <span class="chip bg-color">Clean Code</span>
                                 </a>
                             
-                                <a href="/tags/CI-CD/">
-                                    <span class="chip bg-color">CI/CD</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
-                                <a href="/tags/Pipeline/">
-                                    <span class="chip bg-color">Pipeline</span>
+                                <a href="/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81-%E8%A7%84%E8%8C%83/">
+                                    <span class="chip bg-color">代码整洁/规范</span>
                                 </a>
                             
-                                <a href="/tags/%E9%83%A8%E7%BD%B2/">
-                                    <span class="chip bg-color">部署</span>
+                                <a href="/tags/%E6%B3%A8%E9%87%8A/">
+                                    <span class="chip bg-color">注释</span>
                                 </a>
                             
                         </div>
@@ -872,17 +827,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/20/plantuml-xiao-bai-jian-yi-gong-lue/">
+                <a href="/2021/05/23/clean-code-zhi-zhu-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="PlantUML 小白简易攻略">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Clean-Code之注释">
                         
-                        <span class="card-title">PlantUML 小白简易攻略</span>
+                        <span class="card-title">Clean-Code之注释</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -892,34 +848,39 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Tech-Tools/" class="post-category">
-                                    Tech Tools
+                            <a href="/categories/Tech-Improvement/" class="post-category">
+                                    Tech Improvement
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PlantUML/">
-                        <span class="chip bg-color">PlantUML</span>
+                    <a href="/tags/Clean-Code/">
+                        <span class="chip bg-color">Clean Code</span>
                     </a>
                     
-                    <a href="/tags/C4-modal/">
-                        <span class="chip bg-color">C4 modal</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/%E7%BB%98%E5%9B%BE%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">绘图工具</span>
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81-%E8%A7%84%E8%8C%83/">
+                        <span class="chip bg-color">代码整洁/规范</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B3%A8%E9%87%8A/">
+                        <span class="chip bg-color">注释</span>
                     </a>
                     
                 </div>
@@ -933,13 +894,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/01/hello-world/">
+                <a href="/2021/05/21/react-redux-get-started/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Hexo Quick Start">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="10 Minutes To Get Started React-Redux">
                         
-                        <span class="card-title">Hexo Quick Start</span>
+                        <span class="card-title">10 Minutes To Get Started React-Redux</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -950,14 +911,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Help/" class="post-category">
-                                    Help
+                            <a href="/categories/Tech-Improvement/" class="post-category">
+                                    Tech Improvement
                                 </a>
                             
                             
@@ -967,12 +928,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/react-redux/">
+                        <span class="chip bg-color">react-redux</span>
                     </a>
                     
-                    <a href="/tags/Blog/">
-                        <span class="chip bg-color">Blog</span>
+                    <a href="/tags/store/">
+                        <span class="chip bg-color">store</span>
+                    </a>
+                    
+                    <a href="/tags/reducers/">
+                        <span class="chip bg-color">reducers</span>
                     </a>
                     
                 </div>
