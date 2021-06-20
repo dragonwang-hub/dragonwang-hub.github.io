@@ -4,7 +4,36 @@
   
     
     <entry>
-      <title>Kotlin POJO 101</title>
+      <title>Kotlin POJO 101(2)</title>
+      <link href="2021/06/20/kotlin-pojo-101-2/"/>
+      <url>2021/06/20/kotlin-pojo-101-2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="object-companion-object"><a href="#object-companion-object" class="headerlink" title="object / companion object"></a>object / companion object</h2><p>匿名对象只有定义成局部变量和private成员变量时，才能体现它的真实类型。</p><p>单例模式</p><p>类似于java 全局静态概念</p><h1 id="抽象、开放、密封或者内部的"><a href="#抽象、开放、密封或者内部的" class="headerlink" title="抽象、开放、密封或者内部的"></a>抽象、开放、密封或者内部的</h1><h1 id=""><a href="#" class="headerlink" title="?"></a>?</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tech Improvement </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> Kotlin </tag>
+            
+            <tag> POJO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kotlin POJO 101(1)</title>
       <link href="2021/05/25/kotlin-pojo-101/"/>
       <url>2021/05/25/kotlin-pojo-101/</url>
       
