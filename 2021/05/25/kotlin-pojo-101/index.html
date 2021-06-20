@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Clean Code之命名, Dragon.Wang&#39;Zone">
+    <meta name="keywords" content="Kotlin POJO 101, Dragon.Wang&#39;Zone">
     <meta name="description" content="将进酒，杯莫停。与君歌一曲，请君为我倾耳听。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Clean Code之命名 | Dragon.Wang&#39;Zone</title>
+    <title>Kotlin POJO 101 | Dragon.Wang&#39;Zone</title>
     <link rel="icon" type="image/png" href="/dragon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -288,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Clean Code之命名</h1>
+                    <h1 class="description center-align post-title">Kotlin POJO 101</h1>
                 </div>
             </div>
         </div>
@@ -409,20 +409,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Clean-Code/">
-                                <span class="chip bg-color">Clean Code</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
                             </a>
                         
-                            <a href="/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81-%E8%A7%84%E8%8C%83/">
-                                <span class="chip bg-color">代码整洁/规范</span>
+                            <a href="/tags/Kotlin/">
+                                <span class="chip bg-color">Kotlin</span>
                             </a>
                         
-                            <a href="/tags/%E5%91%BD%E5%90%8D/">
-                                <span class="chip bg-color">命名</span>
+                            <a href="/tags/POJO/">
+                                <span class="chip bg-color">POJO</span>
                             </a>
                         
                     </div>
@@ -446,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-09
+                    2021-05-25
                 </div>
                 
 
@@ -455,14 +451,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    4 分
                 </div>
                 
 
@@ -485,196 +481,187 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Clean-Code-之命名"><a href="#Clean-Code-之命名" class="headerlink" title="Clean Code  之命名"></a>Clean Code  之命名</h1><p>在软件开发过程（Where）中，程序员（Who）随时随地都有可能在命名，命名之事，无处不在。在编程（When）中，常见的命名范围：项目名、封包名、类名、方法名、变量名、参数名。</p>
-<p>本文结合《Clean Code》有意义的命名章节和《Alibaba Java 开发手册》部分内容。从以下三个方面分析命名之道：</p>
-<ol>
-<li><strong>What：什么是好的命名</strong></li>
-<li><strong>Why：为什么需要好的命名</strong></li>
-<li><strong>How：如何实现优雅命名</strong></li>
-</ol>
-<h2 id="什么是好的命名"><a href="#什么是好的命名" class="headerlink" title="什么是好的命名"></a>什么是好的命名</h2><p>简单来说，好的命名就是，当别人看到你的代码时，可以清晰明确了解代码本身含义，不要额外付出去询问或查找每个命名的具体含义。</p>
-<p>好的命名能体现出代码的特征，含义或者是用途，让阅读者可以根据名称的含义快速理清程序的脉络。</p>
-<p>无论是命名和注解，目的都是为了让代码和工程师进行对话，增强代码的可读性，可维护性。优雅的代码往往都见名知意。</p>
-<p>《Clean Code》这本书明确指出：</p>
-<blockquote>
-<p><strong>好的代码本身就是注释，我们要尽量规范和美化自己的代码来减少不必要的注释。</strong></p>
-<p><strong>若编程语言足够有表达力，就不需要注释，尽量通过代码来阐述。</strong></p>
-</blockquote>
-<p>优雅一词在代码领域流传甚久。</p>
-<p>优雅的命名即是注释，别人一看到你的命名就知道你的变量、方法或者类是做什么的！</p>
-<blockquote>
-<p>优雅一词，含义在于：外表或举止上令人愉悦的优美和雅观；令人愉悦的精致和简单。</p>
-<p>其中，愉悦格外重要，显然优雅的代码也是令人阅读起来十分愉悦的。</p>
-</blockquote>
-<p>因此，好的命名必然是让每一位读者都赏心悦目，怀着愉悦心情阅读的。</p>
-<h2 id="为什么需要好的命名"><a href="#为什么需要好的命名" class="headerlink" title="为什么需要好的命名"></a>为什么需要好的命名</h2><p>那么，为什么需要好的命名呢，难道只是为了让读者赏心悦目吗？</p>
-<p>不仅仅如此。</p>
-<p>借用《Java编程语言代码规范》一段开场白：</p>
-<blockquote>
-<p>一个软件需要花费80%的生命周期成本去维护。 　　<br>几乎没有任何软件的整个生命周期仅由其原作者来维护。 　　<br>编码规范改善软件的可读性,让工程师更快更彻底地理解新的代码。 　　<br>如果你将源代码转变为一个产品,那么您需要确保它和你创建的其它产品一样是干净且包装良好的。</p>
-</blockquote>
-<p>所以说，好的命名，其可读性，可维护性就很高。</p>
-<p>接下来，引入以下几个示例了解为什么。</p>
-<h3 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token function">getThem</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> list1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> x <span class="token operator">:</span> theList<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span>
-      list1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> list1<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>看完上例代码，是否有种看到初学编码时代的自己所写代码的感触。</p>
-<p>根据这段代码，我们唯一能了解到的信息可能就是这是一段获取列表数据的代码。具体是什么，无法从代码明确。</p>
-<p>如果需要明确此代码的具体含义，加上大量注释才可完成此目的。</p>
-<p>那么，看完这段代码，你是否有很多问号？</p>
+                <h1 id="Kotlin-POJO-1"><a href="#Kotlin-POJO-1" class="headerlink" title="Kotlin POJO (1)"></a>Kotlin POJO (1)</h1><h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><p><strong>var/val</strong></p>
 <ul>
-<li>getThem到底获取了什么数据？</li>
-<li>theList代表什么？</li>
-<li>list1返回后用于做什么？</li>
-<li>为什么theList元素等于4就被添加至list1？</li>
+<li>var: variable. 声明一个变量。在初始赋值会后仍然可以再被重新赋值，变量类型可自动推导</li>
+<li>val: value. 声明一个不可变的变量。在初始赋值之后就再也不能重新赋值，类似于Java中的final变量；</li>
 </ul>
-<p>短短的几行代码便反应出这么些问题。</p>
-<p>如果我们使用好的命名方式来修改代码，可以得到以下代码：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Cell</span><span class="token punctuation">></span></span> <span class="token function">getFlaggedCells</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Cell</span><span class="token punctuation">></span></span> flaggedCells <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Cell</span> cell<span class="token operator">:</span> gameBoard<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>cell<span class="token punctuation">.</span><span class="token function">isFlagged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-      flaggedCells<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>cell<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> flaggedCells<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>永远优先使用val来声明一个变量，而当val没有办法满足你的需求时再使用var。（这是一种没有变量的思想。）</p>
+<p>注意： 变量类型推导在赋予初始值完成，若要采用延迟赋值，Kotlin则无法推导其类型，仍需要显式声明类型。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">var</span> name<span class="token operator">:</span> String 
+name <span class="token operator">=</span> <span class="token string">"DDD"</span>
+<span class="token comment">// This variable must either have a type annotation or be initialized</span>
 
-<p>看到这部分代码，是否使你心情愉悦了呢？</p>
-<p>简单的修改了命名，我们便能从代码理解其深层含义。回答上例几个问题：</p>
+<span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"DDD"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Kotlin没有基本类型，全部使用对象类型<br><code>Int, String, Long, Double Boolean ......</code><br>类似于Java中包装基本类型的，包装类型。</p>
+<p><strong>const</strong></p>
+<p>若是声明常量：使用const关键字，const不能与var配合使用。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">const</span> <span class="token keyword">val</span> ITS_NAME <span class="token operator">=</span> <span class="token string">"Name IT"</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>final</strong></p>
+<p>请注意，kotlin中默认的类和方法都是final的。因此不能继承、不能override。<br>若要实现可继承的基类需要使用<strong>open关键字</strong>。<br>继承父类与实现接口都只使用<code>:</code>即可。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> Parent <span class="token punctuation">&#123;</span>
+    <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">//...</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> Child <span class="token operator">:</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">//...</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>主构造函数/次构造函数</strong></p>
+<p>在 Kotlin 中的一个类可以有一个<strong>主构造函数</strong>以及一个或多个<strong>次构造函数</strong>。主构造函数是类头的一部分：它跟在类名（与可选的类型参数）后。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Person <span class="token keyword">constructor</span><span class="token punctuation">(</span>firstName<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">/*……*/</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果主构造函数没有任何注解或者可见性修饰符，可以省略这个 <em>constructor</em> 关键字。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">class</span> <span class="token function">Person</span><span class="token punctuation">(</span>firstName<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">/*……*/</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
-<li>此方法获取了被标记的单元格列表数据。</li>
-<li>之前的theList代表gameBoard，游戏地图的单元列表。</li>
-<li>之前的list1存放的是被标记的单元格。</li>
-<li>4则代表此单元格处于被标记状态。</li>
+<li>如果子类有主构造函数， 则基类必须在子类主构造函数中立即初始化。</li>
+<li>如果子类没有主构造函数，则必须在每一个二级构造函数中用 super 关键字初始化基类，或者在代理另一个构造函数。初始化基类时，可以调用基类的不同构造方法。</li>
+<li>通过在一个类中使用主和次级构造函数，次级构造函数需要授权给主构造函数,也就是<strong>次级构造函数会直接或者间接调用主构造函数</strong>。</li>
 </ul>
-<p>由此，我们便可知道，为什么。赋予好的命名可以提高代码可读性，便于理解交流。</p>
-<p>好的命名可以使代码变得更加“优雅”。</p>
-<h3 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">copyChars</span><span class="token punctuation">(</span><span class="token keyword">char</span> a1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">char</span> a2<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a1<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    a2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>示例对比Kotlin/Java 继承及构造器</p>
+<p>// kotlin</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> parent <span class="token operator">=</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token string">"DAD"</span><span class="token punctuation">)</span>
+    parent<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<p>根据这段代码，我们已经可以明确其目的在于复制字符数组。</p>
-<p>但读者依然会有疑惑，对于a1、a2这类<strong>数字系列</strong>命名，其不显示具体含义，且外形极其相似。</p>
-<p>如果不深入了解，未必明白a1、a2的编码者所传递的意图。</p>
-<p>所以，我们可以修改参数名，以体现有意义的区分。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">copyChars</span><span class="token punctuation">(</span><span class="token keyword">char</span> source<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">char</span> destination<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a1<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    destination<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token function">Child</span><span class="token punctuation">(</span><span class="token string">"SON"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+    child<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<p>只是修改了参数名，其就很好的区分了两参数区别，使阅读代码的人能迅速鉴别不同之处。</p>
-<h3 id="示例三"><a href="#示例三" class="headerlink" title="示例三"></a>示例三</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">34</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  sum <span class="token operator">+=</span> <span class="token punctuation">(</span>taskEstimate<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">5</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">var</span> secondChild <span class="token operator">=</span> <span class="token function">SecondChild</span><span class="token punctuation">(</span><span class="token string">"SEC"</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span>
+    secondChild<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
 
-<p>看到这段代码，可以明确其在遍历使用公式求和，但是如果并不明确其中具体算法，依然会处于懵逼树下懵逼果的状态。</p>
-<p>并且，即使知道了数字常量所代表的含义，若要搜索其使用位置，也是十分困难的。</p>
-<p>在《重构》中，将此方法中出现的常量数字称为Code Smell中的Magic Number，即魔法数字，代表无法理解其具体含义的数字。</p>
-<p>因此，采用给常量赋予具体含义的命名可以解决此类问题。如下所示：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> realDaysPerIdealDay <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
-<span class="token keyword">final</span> <span class="token keyword">int</span> WORK_DAYS_PER_WEEKS <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
-<span class="token keyword">final</span> <span class="token keyword">int</span> NUMBER_OF_TASKS <span class="token operator">=</span> <span class="token number">34</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> NUMBER_OF_TASKS<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  <span class="token keyword">int</span> realTaskDays <span class="token operator">=</span> taskEstimate<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> realDaysPerIdealDay<span class="token punctuation">;</span>
-  <span class="token keyword">int</span> realTaskWeeks <span class="token operator">=</span> realTaskDays <span class="token operator">/</span> WORK_DAYS_PER_WEEKS<span class="token punctuation">;</span>
-  sum <span class="token operator">+=</span> realTaskWeeks<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>对每个常量赋予真实意义的名字后，对于此代码理解更加容易。</p>
-<p>测估完成所有任务的周数的算法。</p>
-<p>既提高了代码可读性，又便于在任何位置搜索相关常量值。</p>
-<h3 id="示例四"><a href="#示例四" class="headerlink" title="示例四"></a>示例四</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AbsClass</span> <span class="token punctuation">&#123;</span>
-  boolen condi<span class="token punctuation">;</span>
-  <span class="token keyword">void</span> <span class="token function">fu</span><span class="token punctuation">(</span><span class="token class-name">String</span> pa<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>condi<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"I am Parent. My name is:<span class="token interpolation variable">$name</span>\n"</span><span class="token punctuation">)</span>
     <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span>
 
-<p>此代码中，随意使用简写，导致各命名含义模糊，无法理解。</p>
-<p>即使使用简写模式，也应当使用大家有共识，都认可的方式才好。</p>
-<p>如将简写命名改成全称，如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AbstractClass</span> <span class="token punctuation">&#123;</span>
-  boolen condition<span class="token punctuation">;</span>
-  <span class="token keyword">void</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token class-name">String</span> param<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">class</span> <span class="token function">Child</span><span class="token punctuation">(</span>name<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> age<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Parent</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"I am Child. My name is:<span class="token interpolation variable">$name</span> I am<span class="token interpolation variable">$age</span>\n"</span><span class="token punctuation">)</span>
     <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span>
 
-<p>对比即可发现，全称命名使代码意义直线上升，清晰明了。</p>
-<p>好的命名不应当为了方便而随意使用简写。杜绝完全不规范的缩写，避免望文不知义。</p>
-<h3 id="示例五"><a href="#示例五" class="headerlink" title="示例五"></a>示例五</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token keyword">int</span> MAX_COUNT <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token class-name">EXPiRED_TIME</span> <span class="token operator">=</span> <span class="token number">1000l</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">class</span> SecondChild <span class="token operator">:</span> Parent <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">var</span> age<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">0</span>
 
-<p>此例中常量命名全部大写，且long类型以l结尾。</p>
-<p>但其中常量命名为了缩短名称长度。使得直知道是最大数量、过期时间，并不知其属于什么类型、领域。并且long类型以“l”结尾，“l”与1不易区分。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">final</span> <span class="token keyword">int</span> MAX_STOCK_COUNT <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token class-name">CACHE_EXPiRED_TIME</span> <span class="token operator">=</span> <span class="token number">1000L</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> String<span class="token punctuation">,</span> age<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>修改以后，代码更为清晰，确定了其中具体含义。因此好的命名要力求语义表达完整清楚，不要嫌名字长。</p>
-<p>并且若不采用L结尾，很有可能误以为TIME值为10001。</p>
-<p>…</p>
-<p>根据以上介绍，相信每位读者心中都有一个答案，为什么要用好的命名。</p>
-<p>不好的命名会增大代码理解难度，降低可读性，可维护性，从而导致开发人员费神费力，效率低下。</p>
-<p>简单而言：好的命名可以让读者赏心悦目，怀着愉悦心情接受所有代码。优雅的命名可以提高代码可读性、区分性、可维护性等优点。</p>
-<h2 id="如何实现优雅命名"><a href="#如何实现优雅命名" class="headerlink" title="如何实现优雅命名"></a>如何实现优雅命名</h2><p>很多人可能有了疑问，到底如何可以实现优雅命名呢？</p>
-<p>本文将推荐以下几点：</p>
-<ol>
-<li><p>类名和对象名应当是名词或名词短语，避免动词或意义模糊的词语。</p>
+<p>// java</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">javaDemo</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> main <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Parent</span> parent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Parent</span><span class="token punctuation">(</span><span class="token string">"DAD"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        parent<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Child</span> child <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Child</span><span class="token punctuation">(</span><span class="token string">"SON"</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        child<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Parent</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">protected</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Parent</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I am Parent. My name is:"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Child</span> <span class="token keyword">extends</span> <span class="token class-name">Parent</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Child</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I am Child. My name is:"</span> <span class="token operator">+</span> <span class="token keyword">super</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" I am"</span> <span class="token operator">+</span> age <span class="token operator">+</span> <span class="token string">".\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>无参构造函数</strong></p>
+<p>kotlin中 不管是class 还是data class 都不会自动帮你生成 无参的构造函数。</p>
+<ul>
+<li><p>把定义的属性 <strong>手动给他指定一个默认值</strong></p>
 </li>
-<li><p>方法名应当是动词或动词短语。</p>
+<li><p>声明<strong>指定一个无参的构造函数</strong></p>
 </li>
-<li><p>类名使用UpperCamelCase风格。方法名、参数名、变量名统一使用lowerCamelCase风格。常量名全部大写，单词用下划线隔开。</p>
+<li><p><strong>注解</strong>实现无参构造器</p>
 </li>
-<li><p>包名统一小写，点分隔符之间有且只有一个自然语义单词。</p>
-</li>
-<li><p>抽象类命名使用Abstract或Base开头，异常类命名使用Exception结尾，测试类命名以Test结尾。枚举类名带上 Enum 后缀。</p>
-</li>
-<li><p>选择体现本意的命名以让人更容易理解和修改代码，命名简单直接，不要用俗语。避免中英混用，以及歧视性词语。</p>
-</li>
-<li><p>避免使用与本意相悖的词，避免留下掩藏代码本意的错误线索。在常量与变量的命名时，表示类型的名词放在词尾，以提升辨识度。例如：使用list命名非List结构的数据。</p>
-<pre class="line-numbers language-none"><code class="language-none">eg. Map&lt;int, User&gt; UserList;
-		Map&lt;int, User&gt; UserMap;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li><p>提防外形相似度较高的名称。eg. O和0，l和1</p>
-</li>
-<li><p>对命名做有意义的区分，以让读者准确鉴别不同之处。相同含义的名字不要重复出现，会导致混淆。</p>
-</li>
-<li><p>长名称优于短名称，搜得到的名称优于自造编码的名称。只要能描述清楚含义，尽量使用完整词组表达命名。单字母名称仅用于短方法的本地变量。名字长短应与其作用于带下相对应。</p>
-</li>
-<li><p>避免使用编码，已无需使用m_前缀来标明成员变量，已无意义。</p>
-</li>
-<li><p>避免出现同一个概念具有多个命名，应当统一为每个抽象概念选一个词，并一以贯之。</p>
-</li>
-<li><p>杜绝完全不规范的缩写，避免望文不知义。但可以使用领域专有术语。DO/VO/DTO/PO/POJO/UID等。如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式。eg.工厂模式：public class OrderFactory;</p>
-</li>
-<li><p>单纯的命名无法解释含义，可引入语境前缀，多个字段具有相同语境前缀，可采用类封装，并给予合适命名。但不要在已具有语境的类中添加冗余的前缀。只要短名称即可描述清楚，则无需长名称描述。</p>
-</li>
-<li><p>分离解决方案领域和问题领域的概念，与问题领域更贴近代码应采用源自问题领域的名称。</p>
-</li>
-</ol>
-<p><strong>Reference</strong></p>
-<ol>
-<li><p>《Clean Code》</p>
-</li>
-<li><p>《Java 开发手册》：<a target="_blank" rel="noopener" href="https://github.com/alibaba/p3c/blob/master/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%EF%BC%88%E5%B5%A9%E5%B1%B1%E7%89%88%EF%BC%89.pdf">https://github.com/alibaba/p3c/blob/master/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%EF%BC%88%E5%B5%A9%E5%B1%B1%E7%89%88%EF%BC%89.pdf</a></p>
-</li>
-<li><p>智能命名工具codeIf：<a target="_blank" rel="noopener" href="https://unbug.github.io/codelf/">https://unbug.github.io/codelf/</a></p>
-</li>
-<li><p>DO、BO、DTO、VO、AO、PO、UID 名词意义：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/105390453">https://zhuanlan.zhihu.com/p/105390453</a></p>
-</li>
-</ol>
+</ul>
+<p>Demo: 使用@NoArg</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// build.gradle.kts</span>
+noArg <span class="token punctuation">&#123;</span>
+    <span class="token keyword">annotation</span><span class="token punctuation">(</span><span class="token string">"statuspage.backend.annotation.NoArg"</span><span class="token punctuation">)</span>
+    invokeInitializers <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// annoation</span>
+<span class="token keyword">package</span> noarg<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>annotation
+
+<span class="token keyword">annotation</span> <span class="token keyword">class</span> NoArg
+
+<span class="token comment">// how to use</span>
+<span class="token annotation builtin">@NoArg</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">OrgInfo</span><span class="token punctuation">(</span>
+    <span class="token keyword">val</span> orgName<span class="token operator">:</span> String
+<span class="token punctuation">)</span> <span class="token operator">:</span> Serializable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="data-class"><a href="#data-class" class="headerlink" title="data class"></a>data class</h2><p><strong>只保存数据</strong>的类</p>
+<p>在Kotlin中，不能从数据类继承，因为编译器没有明智的方法来生成为数据类自动提供的所有方法。</p>
+<p>data 数据类底层实现了哪些基本方法</p>
+<ul>
+<li>getter/setter</li>
+<li>全参构造器</li>
+<li>equals()/hashCode()</li>
+<li>toString</li>
+<li>copy() : 浅拷贝</li>
+<li>componentN() : 按声明顺序对应于所有属性</li>
+</ul>
+<p>数据类必须满足以下要求：</p>
+<ul>
+<li>主构造函数需要至少有一个参数；</li>
+<li>主构造函数的所有参数需要标记为 <code>val</code> 或 <code>var</code>；</li>
+<li>数据类不能是抽象、开放、密封或者内部的；</li>
+</ul>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token annotation builtin">@NoArg</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Alert</span><span class="token punctuation">(</span>
+    <span class="token keyword">val</span> id<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    <span class="token keyword">val</span> dashboardId<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    <span class="token keyword">val</span> dashboardSlug<span class="token operator">:</span> String<span class="token punctuation">,</span>
+    <span class="token keyword">val</span> panelId<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+    <span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span>
+    <span class="token keyword">val</span> state<span class="token operator">:</span> String<span class="token punctuation">,</span>
+    <span class="token keyword">val</span> newStateDate<span class="token operator">:</span> Date<span class="token punctuation">,</span>
+    <span class="token keyword">val</span> url<span class="token operator">:</span> String
+<span class="token punctuation">)</span> <span class="token operator">:</span> Serializable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注： data class依然没有无参构造器，实现无参构造与上述方法相似。</p>
 
                 
             </div>
@@ -701,7 +688,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dragonwang-hub.github.io/2021/04/09/clean-code-zhi-ming-ming/">https://dragonwang-hub.github.io/2021/04/09/clean-code-zhi-ming-ming/</a>
+                    <a href="https://dragonwang-hub.github.io/2021/05/25/kotlin-pojo-101/">https://dragonwang-hub.github.io/2021/05/25/kotlin-pojo-101/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -739,20 +726,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Clean-Code/">
-                                    <span class="chip bg-color">Clean Code</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
                                 </a>
                             
-                                <a href="/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81-%E8%A7%84%E8%8C%83/">
-                                    <span class="chip bg-color">代码整洁/规范</span>
+                                <a href="/tags/Kotlin/">
+                                    <span class="chip bg-color">Kotlin</span>
                                 </a>
                             
-                                <a href="/tags/%E5%91%BD%E5%90%8D/">
-                                    <span class="chip bg-color">命名</span>
+                                <a href="/tags/POJO/">
+                                    <span class="chip bg-color">POJO</span>
                                 </a>
                             
                         </div>
@@ -924,62 +907,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/04/20/dockerfileanddocker-compose/">
+                <a href="/2021/05/25/kotlin-pojo-101/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Dockerfile 及 Docker-compose使用详解">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Kotlin POJO 101">
                         
-                        <span class="card-title">Dockerfile 及 Docker-compose使用详解</span>
+                        <span class="card-title">Kotlin POJO 101</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文将从如何定制Docker 镜像开始，主要分为两部分：Dockerfile和Docker-compose。若读者从未使用过Docker，建议先了解Docker基本概念及相关指令再来阅读此文.
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/DevOps/" class="post-category">
-                                    DevOps
+                            <a href="/categories/Tech-Improvement/" class="post-category">
+                                    Tech Improvement
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/Dockerfile/">
-                        <span class="chip bg-color">Dockerfile</span>
+                    <a href="/tags/Kotlin/">
+                        <span class="chip bg-color">Kotlin</span>
                     </a>
                     
-                    <a href="/tags/Docker-compose/">
-                        <span class="chip bg-color">Docker-compose</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AE%B9%E5%99%A8%E7%BC%96%E6%8E%92/">
-                        <span class="chip bg-color">容器编排</span>
-                    </a>
-                    
-                    <a href="/tags/Ops/">
-                        <span class="chip bg-color">Ops</span>
+                    <a href="/tags/POJO/">
+                        <span class="chip bg-color">POJO</span>
                     </a>
                     
                 </div>
@@ -993,13 +970,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/20/plantuml-xiao-bai-jian-yi-gong-lue/">
+                <a href="/2021/05/23/clean-code-zhi-zhu-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="PlantUML 小白简易攻略">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Clean-Code之注释">
                         
-                        <span class="card-title">PlantUML 小白简易攻略</span>
+                        <span class="card-title">Clean-Code之注释</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1010,14 +987,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Tech-Tools/" class="post-category">
-                                    Tech Tools
+                            <a href="/categories/Tech-Improvement/" class="post-category">
+                                    Tech Improvement
                                 </a>
                             
                             
@@ -1027,16 +1004,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PlantUML/">
-                        <span class="chip bg-color">PlantUML</span>
+                    <a href="/tags/Clean-Code/">
+                        <span class="chip bg-color">Clean Code</span>
                     </a>
                     
-                    <a href="/tags/C4-modal/">
-                        <span class="chip bg-color">C4 modal</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/%E7%BB%98%E5%9B%BE%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">绘图工具</span>
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81-%E8%A7%84%E8%8C%83/">
+                        <span class="chip bg-color">代码整洁/规范</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B3%A8%E9%87%8A/">
+                        <span class="chip bg-color">注释</span>
                     </a>
                     
                 </div>
