@@ -488,7 +488,7 @@
 </ul>
 <p>永远优先使用val来声明一个变量，而当val没有办法满足你的需求时再使用var。（这是一种没有变量的思想。）</p>
 <p>注意： 变量类型推导在赋予初始值完成，若要采用延迟赋值，Kotlin则无法推导其类型，仍需要显式声明类型。</p>
-<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">var</span> name<span class="token operator">:</span> String 
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">var</span> name 
 name <span class="token operator">=</span> <span class="token string">"DDD"</span>
 <span class="token comment">// This variable must either have a type annotation or be initialized</span>
 
@@ -650,16 +650,14 @@ noArg <span class="token punctuation">&#123;</span>
 <li>数据类不能是抽象、开放、密封或者内部的；</li>
 </ul>
 <pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token annotation builtin">@NoArg</span>
-<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Alert</span><span class="token punctuation">(</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Info</span><span class="token punctuation">(</span>
     <span class="token keyword">val</span> id<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-    <span class="token keyword">val</span> dashboardId<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-    <span class="token keyword">val</span> dashboardSlug<span class="token operator">:</span> String<span class="token punctuation">,</span>
     <span class="token keyword">val</span> panelId<span class="token operator">:</span> Int<span class="token punctuation">,</span>
     <span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span>
     <span class="token keyword">val</span> state<span class="token operator">:</span> String<span class="token punctuation">,</span>
     <span class="token keyword">val</span> newStateDate<span class="token operator">:</span> Date<span class="token punctuation">,</span>
     <span class="token keyword">val</span> url<span class="token operator">:</span> String
-<span class="token punctuation">)</span> <span class="token operator">:</span> Serializable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span> <span class="token operator">:</span> Serializable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注： data class依然没有无参构造器，实现无参构造与上述方法相似。</p>
 
