@@ -628,7 +628,10 @@ noArg <span class="token punctuation">&#123;</span>
 <span class="token annotation builtin">@NoArg</span>
 <span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">OrgInfo</span><span class="token punctuation">(</span>
     <span class="token keyword">val</span> orgName<span class="token operator">:</span> String
-<span class="token punctuation">)</span> <span class="token operator">:</span> Serializable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span> <span class="token operator">:</span> Serializable
+
+<span class="token comment">// how to use no-arg create object</span>
+<span class="token keyword">val</span> orgInfo <span class="token operator">=</span> OrgInfo<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
