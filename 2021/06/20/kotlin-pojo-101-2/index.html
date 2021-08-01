@@ -616,7 +616,9 @@ strB<span class="token punctuation">.</span>length <span class="token comment">/
 <pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">val</span> strC<span class="token operator">:</span> String<span class="token operator">?</span> <span class="token operator">=</span> <span class="token string">"ccc"</span>
 <span class="token keyword">val</span> stcD<span class="token operator">:</span> String<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
 <span class="token keyword">val</span> lenC <span class="token operator">=</span> strC<span class="token operator">?</span><span class="token punctuation">.</span>length <span class="token operator">?:</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token comment">// return 3</span>
-<span class="token keyword">val</span> lenD <span class="token operator">=</span> strD<span class="token operator">?</span><span class="token punctuation">.</span>length <span class="token operator">?:</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token comment">// return -1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">val</span> lenD <span class="token operator">=</span> strD<span class="token operator">?</span><span class="token punctuation">.</span>length <span class="token operator">?:</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token comment">// return -1</span>
+
+<span class="token keyword">val</span> lenD <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>strD<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span> strD<span class="token punctuation">.</span>length <span class="token keyword">else</span> <span class="token operator">-</span><span class="token number">1</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注意：右边也可以是throw语句。</p>
 <h3 id="-3"><a href="#-3" class="headerlink" title="!!"></a>!!</h3><p>有时候如果需要将nullable变量转换为non-nullable变量，则需要用上<code>!!</code>强制类型转换符。<br>同时也要注意，一旦变量被声明为non-nullable类型，若出现为null情况，就会出现NPE。<br>因此，不要随意使用<code>!!</code></p>
@@ -870,18 +872,17 @@ strB<span class="token punctuation">.</span>length <span class="token comment">/
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/20/kotlin-pojo-101-2/">
+                <a href="/2021/07/30/android-get-started/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Kotlin POJO 101(2)">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Android Get Started">
                         
-                        <span class="card-title">Kotlin POJO 101(2)</span>
+                        <span class="card-title">Android Get Started</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -891,9 +892,9 @@ strB<span class="token punctuation">.</span>length <span class="token comment">/
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -906,24 +907,23 @@ strB<span class="token punctuation">.</span>length <span class="token comment">/
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Kotlin/">
-                        <span class="chip bg-color">Kotlin</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/POJO/">
-                        <span class="chip bg-color">POJO</span>
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">单例模式</span>
+                    <a href="/tags/Rxjava/">
+                        <span class="chip bg-color">Rxjava</span>
                     </a>
                     
-                    <a href="/tags/NPE/">
-                        <span class="chip bg-color">NPE/?.</span>
+                    <a href="/tags/Layout-ViewModel-LiveData/">
+                        <span class="chip bg-color">Layout/ViewModel/LiveData</span>
                     </a>
                     
                 </div>
@@ -1185,7 +1185,7 @@ strB<span class="token punctuation">.</span>length <span class="token comment">/
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">26.3k</span>
+                        class="white-color">29.5k</span>
             
             
             
