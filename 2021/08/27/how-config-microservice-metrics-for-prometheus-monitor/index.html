@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How Config Microservice Metrics for Prometheus Monitor, Dragon.Wang&#39;Zone">
+    <meta name="keywords" content="How Config Microservice Metrics for Monitor, Dragon.Wang&#39;Zone">
     <meta name="description" content="将进酒，杯莫停。与君歌一曲，请君为我倾耳听。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>How Config Microservice Metrics for Prometheus Monitor | Dragon.Wang&#39;Zone</title>
+    <title>How Config Microservice Metrics for Monitor | Dragon.Wang&#39;Zone</title>
     <link rel="icon" type="image/png" href="/dragon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -288,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How Config Microservice Metrics for Prometheus Monitor</h1>
+                    <h1 class="description center-align post-title">How Config Microservice Metrics for Monitor</h1>
                 </div>
             </div>
         </div>
@@ -489,7 +489,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="如何配置服务以使用Prometheus监控其状态"><a href="#如何配置服务以使用Prometheus监控其状态" class="headerlink" title="如何配置服务以使用Prometheus监控其状态"></a>如何配置服务以使用Prometheus监控其状态</h1><p><strong>要点</strong>：本文旨在记录如何通过Grafana+Prometheus 监控K8S内部署的无公网域名服务的健康状态。Grafana作为一个展示平台，其更多用于数据展示分析汇总，数据来源于Prometheus，因此，Prometheus在监测链路中才是最主要的负责Scrap服务状态数据的服务。在各大论坛博客出处，已有如何通过配置Grafana+Prometheus来获取服务状态，但鲜有人讲述如何配置服务以便于Prometheus去抓取数据。因此，本文<strong>重点在于讲述如何通过配置Springboot服务和Nginx服务暴露其Metric监控数据接口</strong>，以供Prometheus调用消费。</p>
+                <h1 id="配置Springboot-Nginx服务以便于监控服务状态"><a href="#配置Springboot-Nginx服务以便于监控服务状态" class="headerlink" title="配置Springboot/Nginx服务以便于监控服务状态"></a>配置Springboot/Nginx服务以便于监控服务状态</h1><p><strong>要点</strong>：本文旨在记录如何通过Grafana+Prometheus 监控K8S内部署的无公网域名服务的健康状态。Grafana作为一个展示平台，其更多用于数据展示分析汇总，数据来源于Prometheus，因此，Prometheus在监测链路中才是最主要的负责Scrap服务状态数据的服务。在各大论坛博客出处，已有如何通过配置Grafana+Prometheus来获取服务状态，但鲜有人讲述如何配置服务以便于Prometheus去抓取数据。因此，本文<strong>重点在于讲述如何通过配置Springboot服务和Nginx服务暴露其Metric监控数据接口</strong>，以供Prometheus调用消费。</p>
 <p>一言蔽之，Prometheus即便已知如何Scrap数据，当被监测方不去提供数据接口，其仍旧无意义，即单相思总是不行的。</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着云部署的发展，现在越来越多服务部署在云服务上，比如AWS、阿里云等等。而其部署平台核心大多都与K8S有关。</p>
 <p>一个服务的健康与否，应当能及时给予监测结果。</p>
@@ -1003,9 +1003,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="How Config Microservice Metrics for Prometheus Monitor">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="How Config Microservice Metrics for Monitor">
                         
-                        <span class="card-title">How Config Microservice Metrics for Prometheus Monitor</span>
+                        <span class="card-title">How Config Microservice Metrics for Monitor</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
