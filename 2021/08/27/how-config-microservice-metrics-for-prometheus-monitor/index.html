@@ -1,0 +1,1547 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="How Config Microservice Metrics for Prometheus Monitor, Dragon.Wang&#39;Zone">
+    <meta name="description" content="将进酒，杯莫停。与君歌一曲，请君为我倾耳听。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>How Config Microservice Metrics for Prometheus Monitor | Dragon.Wang&#39;Zone</title>
+    <link rel="icon" type="image/png" href="/dragon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/dragon.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Dragon.Wang&#39;Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/dragon.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Dragon.Wang&#39;Zone</div>
+        <div class="logo-desc">
+            
+            将进酒，杯莫停。与君歌一曲，请君为我倾耳听。
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/dragonwang-hub/dragonwang-hub.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/dragonwang-hub/dragonwang-hub.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">How Config Microservice Metrics for Prometheus Monitor</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Prometheus/">
+                                <span class="chip bg-color">Prometheus</span>
+                            </a>
+                        
+                            <a href="/tags/Monitor/">
+                                <span class="chip bg-color">Monitor</span>
+                            </a>
+                        
+                            <a href="/tags/Metrics/">
+                                <span class="chip bg-color">Metrics</span>
+                            </a>
+                        
+                            <a href="/tags/Nginx/">
+                                <span class="chip bg-color">Nginx</span>
+                            </a>
+                        
+                            <a href="/tags/Springboot/">
+                                <span class="chip bg-color">Springboot</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Devops/" class="post-category">
+                                Devops
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-08-27
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="如何配置服务以使用Prometheus监控其状态"><a href="#如何配置服务以使用Prometheus监控其状态" class="headerlink" title="如何配置服务以使用Prometheus监控其状态"></a>如何配置服务以使用Prometheus监控其状态</h1><p><strong>要点</strong>：本文旨在记录如何通过Grafana+Prometheus 监控K8S内部署的无公网域名服务的健康状态。Grafana作为一个展示平台，其更多用于数据展示分析汇总，数据来源于Prometheus，因此，Prometheus在监测链路中才是最主要的负责Scrap服务状态数据的服务。在各大论坛博客出处，已有如何通过配置Grafana+Prometheus来获取服务状态，但鲜有人讲述如何配置服务以便于Prometheus去抓取数据。因此，本文<strong>重点在于讲述如何通过配置Springboot服务和Nginx服务暴露其Metric监控数据接口</strong>，以供Prometheus调用消费。</p>
+<p>一言蔽之，Prometheus即便已知如何Scrap数据，当被监测方不去提供数据接口，其仍旧无意义，即单相思总是不行的。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着云部署的发展，现在越来越多服务部署在云服务上，比如AWS、阿里云等等。而其部署平台核心大多都与K8S有关。</p>
+<p>一个服务的健康与否，应当能及时给予监测结果。</p>
+<p>试想以下情况，一名开发人员只注重业务代码开发，从未考虑服务健康状态如何监测，那一旦服务出现任何问题，都将致使服务无效，更别说去定位业务代码的问题。</p>
+<p>因此，我们能知道，监测服务健康状态是具有十分重要意义的。</p>
+<p><strong>公有域名监测</strong><br>一般来说，当我们服务部署后，拥有公网域名，可以通过Pingdom平台去监测轮询监测服务健康状态，其原理在于轮询所部属服务的某个API接口并判断返回状态码。<br>BTW，对于SpringBoot服务，框架可以通过配置文件暴露出health check endpoint以供监测平台进行查询。而其他框架的服务，若不自带健康监测endpoint，也可以通过自定义一个endpoint用于监测。</p>
+<p>但有时我们需要监测部署在云平台上却又没有公网域名的服务，应该怎么做呢？<br>对于K8S而言，其可以通过部署Grafana+Prometheus方式直接监测服务的具体状态。<br>具体监控数据由被监测服务决定，其实很多状态数据都由框架生成，当然也可自定义。<br>K8S服务监控可阅读此文: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/100406234">K8S监控简介</a></p>
+<p>了解K8S监控基本原理后，接下来将进入正题：</p>
+<p>在各大论坛博客出处，已有如何通过配置Grafana+Prometheus来获取服务状态，随手一搜便是许多。<br>但是本文不去讲上游端如何抓取数据，而是分析下游端如何暴露数据以供抓取，<br>这便是本文主题：如何配置Springboot 服务和Nginx服务以供Prometheus监控健康状态。</p>
+<h2 id="Springboot-服务"><a href="#Springboot-服务" class="headerlink" title="Springboot 服务"></a>Springboot 服务</h2><p>目前而言，大部分后端服务都采用了Springboot框架，因此，了解如何配置暴露Springboot服务的健康监测端口十分必要。</p>
+<p>正因为框架帮助开发人员封装了很多方法，对于Springboot服务，其已经具有了很多健康监测接口，比如<code>health、info、metrics</code>。主要依靠Springboot Actuator。<br>具体了解Springboot Actuator 可查看<a target="_blank" rel="noopener" href="http://www.ityouknow.com/springboot/2018/02/06/spring-boot-actuator.html">使用 Spring Boot Actuator 监控应用</a></p>
+<p>了解基本概念后，可以查看如何简单配置使用Actuator。</p>
+<p>若需要暴露某些Actuator接口以便于使用，可在<code>*.properties</code>文件增加以下配置：</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token comment"># expose Actuator endpoint for prometheus</span>
+
+<span class="token comment"># base-path default is /actuator</span>
+<span class="token attr-name">management.endpoints.web.base-path</span><span class="token punctuation">=</span><span class="token attr-value">/custom-prefix</span>
+<span class="token comment"># exposure include `/health` `metrics` `/prometheus`</span>
+<span class="token attr-name">management.endpoints.web.exposure.include</span><span class="token punctuation">=</span><span class="token attr-value">health,metrics,prometheus</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>此处需注意：若要修改base-path，就要使用第一个属性，若要暴露任何已定义Actuator接口，则在第二个属性后新增即可。</p>
+<p>这里最主要的是增加了<code>prometheus</code>接口。其可将Actuator的<code>/metrics</code>(报告各种应用程序度量信息)的数据汇总成prome可识别的格式暴露在<code>/prometheus</code>接口。</p>
+<p>若要使用<code>/prometheus</code>接口，还需要再Springboot服务中引入一个Library，具体添加方式为：在<code>build.gradle.kts</code>文件内的<code>dependencies</code>增加新依赖。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token function">implementation</span><span class="token punctuation">(</span><span class="token string">"io.micrometer:micrometer-registry-prometheus:1.7.0"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 注意：这是kotlin的gradle文件写法，如果是groove的gradle文件请自行更改符号格式。如果从来不了解gradle的DSL语法，请上网查阅</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>至此，当在本地启动服务后，打开<code>localhost:8080/custom-prefix/prometheus</code>便能看到相关的metrics数据。当然其他接口下也有相应数据。</p>
+<blockquote>
+<p>NOTE 引用：<a target="_blank" rel="noopener" href="http://www.ityouknow.com/springboot/2018/02/06/spring-boot-actuator.html">使用 Spring Boot Actuator 监控应用</a></p>
+</blockquote>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">HTTP 方法</th>
+<th align="left">路径</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">/auditevents</td>
+<td align="left">显示应用暴露的审计事件 (比如认证进入、订单失败)</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/beans</td>
+<td align="left">描述应用程序上下文里全部的 Bean，以及它们的关系</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/conditions</td>
+<td align="left">就是 1.0 的 /autoconfig ，提供一份自动配置生效的条件情况，记录哪些自动配置条件通过了，哪些没通过</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/configprops</td>
+<td align="left">描述配置属性(包含默认值)如何注入Bean</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/env</td>
+<td align="left">获取全部环境属性</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/env/{name}</td>
+<td align="left">根据名称获取特定的环境属性值</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/flyway</td>
+<td align="left">提供一份 Flyway 数据库迁移信息</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/liquidbase</td>
+<td align="left">显示Liquibase 数据库迁移的纤细信息</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/health</td>
+<td align="left">报告应用程序的健康指标，这些值由 HealthIndicator 的实现类提供</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/heapdump</td>
+<td align="left">dump 一份应用的 JVM 堆信息</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/httptrace</td>
+<td align="left">显示HTTP足迹，最近100个HTTP request/repsponse</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/info</td>
+<td align="left">获取应用程序的定制信息，这些信息由info打头的属性提供</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/logfile</td>
+<td align="left">返回log file中的内容(如果 logging.file 或者 logging.path 被设置)</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/loggers</td>
+<td align="left">显示和修改配置的loggers</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/metrics</td>
+<td align="left">报告各种应用程序度量信息，比如内存用量和HTTP请求计数</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/metrics/{name}</td>
+<td align="left">报告指定名称的应用程序度量值</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/scheduledtasks</td>
+<td align="left">展示应用中的定时任务信息</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/sessions</td>
+<td align="left">如果我们使用了 Spring Session 展示应用中的 HTTP sessions 信息</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">/shutdown</td>
+<td align="left">关闭应用程序，要求endpoints.shutdown.enabled设置为true</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/mappings</td>
+<td align="left">描述全部的 URI路径，以及它们和控制器(包含Actuator端点)的映射关系</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">/threaddump</td>
+<td align="left">获取线程活动的快照</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>可能看到这里，读者要说，这不都是基操，有何必要再写出来，随便一篇博客都比这份清晰深入。<br>但是其实希望自己明白，因此梳理一遍最近所遇相关问题，其次便于之后再遇到相似问题查找方便，最后，也会<strong>附上Springboot如何注册自定义Metrics数据</strong>的方法。</p>
+<p><strong>自定义Metrics数据</strong></p>
+<p>正如之前所说，部分情况下，我们需要监测内部服务的健康状态，此时，并不需要过多的数据描述，只需要一个合适的metric作为服务健康与否的指标即可。但是当配置完服务的<code>actuator</code>和<code>/proemtheus</code>后，发现其内更多的是JVM的相关数据，并没有一个明确的指标作为数据源。</p>
+<p>此时，我们回想之前所说，Springboot 已经配置了health check endpoint，那么，是否可以通过自定义metric将health check结果注册进<code>MeterRegistry</code>内进而实现将数据暴露在<code>/prometheus</code>接口内呢？答案当然是肯定的</p>
+<p><em>Springboot <code>MeterRegistry</code> 相关可查看：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1486382">JVM应用度量框架Micrometer</a></em></p>
+<p>思路及方法参考Stack Overflow论坛。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token operator">..</span><span class="token punctuation">.</span>
+<span class="token comment">// 使用MeterRegistry 注册自定义的 gauge（量值）类型数据，将定期轮询health check endpoint结果并将值赋给自定义指标</span>
+<span class="token comment">// 服务的health check的结果来源于Springboot容器内的HealthEndpoint bean。</span>
+<span class="token annotation builtin">@Configuration</span>
+<span class="token keyword">class</span> <span class="token function">MyHealthMetricsConfig</span><span class="token punctuation">(</span>customerMeterRegistry<span class="token operator">:</span> MeterRegistry<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation builtin">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token keyword">lateinit</span> <span class="token keyword">var</span> myHealthEndpoint<span class="token operator">:</span> HealthEndpoint
+    <span class="token keyword">private</span> <span class="token keyword">val</span> myHealthCheck<span class="token operator">:</span> AtomicInteger<span class="token operator">?</span> <span class="token operator">=</span> customerMeterRegistry<span class="token punctuation">.</span><span class="token function">gauge</span><span class="token punctuation">(</span><span class="token string">"health_check"</span><span class="token punctuation">,</span> <span class="token function">AtomicInteger</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token annotation builtin">@Scheduled</span><span class="token punctuation">(</span>fixedRateString <span class="token operator">=</span> <span class="token string">"60000"</span><span class="token punctuation">,</span> initialDelayString <span class="token operator">=</span> <span class="token string">"10000"</span><span class="token punctuation">)</span>
+    <span class="token keyword">fun</span> <span class="token function">schedulingTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        myHealthCheck<span class="token operator">!!</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token function">myHealthToCode</span><span class="token punctuation">(</span>myHealthEndpoint<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">companion</span> <span class="token keyword">object</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">myHealthToCode</span><span class="token punctuation">(</span>endPoint<span class="token operator">:</span> HealthEndpoint<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">&#123;</span>
+          <span class="token comment">// 监测服务healthc 端点的的结果状态，up 为1 ，非up 均为0。 以数值结果代表服务健康状态</span>
+            <span class="token keyword">return</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>endPoint<span class="token punctuation">.</span><span class="token function">health</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>status <span class="token operator">==</span> Status<span class="token punctuation">.</span>UP<span class="token punctuation">)</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token number">0</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>至此，可以在<code>/promtheus</code>接口查询到命名为<code>health_check</code>的数据结果。如何去使用数据便在消费端去自定义了。</p>
+<p>此方法不仅可用于定义一个健康监测指标，若有任何其他需要自定义的指标数据，也可使用此部分代码套路进行声明、注册、赋值操作。</p>
+<p>后端Springboot服务具体配置已梳理完结，若之后有新增信息，会进行补充说明。<br>之后会进行前端Nginx配置简单分析，因Nginx是个中间件，不像框架已做一部分工作，因此还需一些新引入配置，接下来我们来看具体如何配置Nginx已暴露数据供监测方使用。</p>
+<h2 id="Nginx-服务"><a href="#Nginx-服务" class="headerlink" title="Nginx 服务"></a>Nginx 服务</h2><p>前端大部分服务都是已打包完成的<code>html/css/js</code>文件，实际部署时，只是将相应的文件放在Nginx服务器上，并对Nginx服务进行简单配置即可。因此前端服务的监测主要集中在监测Nginx服务数据状态，而Nginx服务作为代理中间件，其内会接受发送大量的Http请求，因此通过监测Http请求的一些数据，便可实现对部署在Nginx上的服务状态进行监测。</p>
+<p>如上所述，Nginx与Springboot不同，并不能通过简单配置便可是Prome直接获取到Nginx相关的服务状态数据。但，车到山前必有路，已有很多服务可以作为Nginx和Prometheus通信的桥梁，实现将Nginx数据汇总整理暴露成metric结果形式的数据供Prometheus消费。</p>
+<p>常用的有两种:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/nginxinc/nginx-prometheus-exporter">NGINX Prometheus Exporter</a>: <a target="_blank" rel="noopener" href="https://nginx.org/">NGINX</a> exposes a handful of metrics via the <a target="_blank" rel="noopener" href="https://nginx.org/en/docs/http/ngx_http_stub_status_module.html#stub_status">stub_status page</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/martin-helmich/prometheus-nginxlog-exporter">NGINX-to-Prometheus log file exporter</a>: Helper tool that continuously reads an NGINX log file (or any kind of similar log file) and exports metrics to Prometheus.</li>
+</ul>
+<p>具体如何配置以实现桥梁作用，和已定义的metric可直接查看其<strong>Github的主页README文档</strong>，十分详细，此处不再阐述基本概念内容。</p>
+<p>接下来进行一个Demo实现描述具体如何配置</p>
+<p><strong>Demo示例</strong>：描述如何使用NGINX-to-Prometheus log file exporter 实现step by step完成监测Nginx服务健康状态的配置。</p>
+<p>下图简单展示了Nginx 和 Prometheus_nignxlog_exporter 以及 Prometheus 和 Grafana的 关系。</p>
+<p>由 Prometheus_nignxlog_exporter服务的作用可知，其主要作为Nginx和Prometheus的中间桥梁，主要通过收集Nginx的log日志，进而整理出一份关于Nginx服务的监控指标数据结果，并将结果暴露给Prometheus使用。具体指标可查Github文档。</p>
+<p>任何事务的协作都需双方同意，因此，在使用Prometheus_nignxlog_exporter时需要配置Nginx服务保证将log日志输出至某个位置，比如将log输出至<code>&lt;IP&gt;:&lt;PORT&gt;</code>。同时配置Prometheus_nignxlog_exporter的监听地址。即可实现nignxlog_exporter获取Nginx log进而依据日志整理Nginx服务的状态数据。同样，Prometheus如何获取Nginx服务的状态数据，即通过监听Prometheus_nignxlog_exporter的某个暴露地址，通过配置轮询收集状态数据。<br>至于Prometheus和Grafana，不是此文重点，不再阐述。</p>
+<img src="/2021/08/27/how-config-microservice-metrics-for-prometheus-monitor/image-20210831202412690.png" class="" alt="image-20210831202412690">
+
+<p>经过简单的梳理，相信读者老爷们已经有一定了解，具体配置可归纳为以下几步：</p>
+<ol>
+<li>在Nginx conf 文件中，增加相关log format定义和log 输出地址</li>
+<li>在服务中新增prometheus_nginxlog_exporter容器，并设置其expose数据指标的Port和API地址（API 默认为<code>/metrics</code>）</li>
+<li>设置prometheus_nginxlog_exporter的配置文件，主要设置source logs的 <code>&lt;IP&gt;:&lt;PORT&gt;</code> 和其他针对数据的处理。</li>
+<li>配置Prometheus以抓取prometheus_nginxlog_exporter数据指标，根据其第二步expose的Port和API地址设置。</li>
+<li>配置Grafana以根据具体metric选择展示的数据。</li>
+</ol>
+<p>接下来，通过一部分代码展示如何配置Nginx和prometheus_nginxlog_exporter。</p>
+<p><strong>Nginx 配置</strong></p>
+<p>在Nginx配置文件中新增log format格式和access_log参数</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token keyword">log_format</span> prometheus_exporter_log_format <span class="token string">'$remote_addr - $remote_user [$time_local] '</span>
+<span class="token string">'"$request_uri" $request_time $status'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">access_log</span> syslog<span class="token punctuation">:</span><span class="token keyword">server</span><span class="token operator">=</span><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token punctuation">:</span><span class="token number">88888</span> prometheus_exporter_log_format<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>定义一个prometheus_exporter_log_format代表log格式。使用access_log输出system logs至<code>127.0.0.1:88888</code>，其log格式依照prometheus_exporter_log_format定义。</p>
+<p><strong>prometheus_nginxlog_exporter 配置</strong><br>Nginx已将logs输出，因此需要增加相关配置文件，此处不展示如何在一个服务内启动一个prometheus_nginxlog_exporter。<br>简易版配置如下：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">listen</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">4040</span>
+  <span class="token comment"># metrics_endpoint 默认为 "/metrics"</span>
+  <span class="token key atrule">metrics_endpoint</span><span class="token punctuation">:</span> <span class="token string">"/api/nginx/metrics"</span>
+<span class="token key atrule">enable_experimental</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">namespaces</span><span class="token punctuation">:</span>
+	<span class="token comment"># metrics前缀, for example `my_nginx_app_&lt;固定metric名>`</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> my_nginx_app
+    <span class="token key atrule">format</span><span class="token punctuation">:</span> '$remote_addr <span class="token punctuation">-</span> $remote_user <span class="token punctuation">[</span>$time_local<span class="token punctuation">]</span> ' '\"$request_uri\" $request_time $status';
+    <span class="token comment"># 设置所抓取 nignx 服务 logs 具体地址</span>
+    <span class="token key atrule">source</span><span class="token punctuation">:</span>
+      <span class="token key atrule">syslog</span><span class="token punctuation">:</span>
+        <span class="token key atrule">listen_address</span><span class="token punctuation">:</span> <span class="token string">"udp://127.0.0.1:88888"</span>
+        <span class="token comment"># format 格式代码rfc3164，可查询https://www.diaryfolio.com/2020/07/syslog-standards-simple-comparison.html查看相关</span>
+        <span class="token key atrule">format</span><span class="token punctuation">:</span> rfc3164
+        <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> nginx
+    <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> my_nginx_app
+      <span class="token key atrule">nginx</span><span class="token punctuation">:</span> nginx
+    <span class="token comment"># relabel的配置</span>
+    <span class="token key atrule">relabel_configs</span><span class="token punctuation">:</span>
+      <span class="token comment"># 对 request_uri 的 path label的内容进行查询替换操作等</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">target_label</span><span class="token punctuation">:</span> path
+        <span class="token key atrule">from</span><span class="token punctuation">:</span> request_uri
+        <span class="token key atrule">matches</span><span class="token punctuation">:</span>
+          <span class="token comment"># 去除 path中 URL 查询参数</span>
+          <span class="token punctuation">-</span> <span class="token key atrule">regexp</span><span class="token punctuation">:</span> <span class="token string">'^([^?]*)?.*'</span>
+            <span class="token key atrule">replacement</span><span class="token punctuation">:</span> <span class="token string">'$1'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意：在配置prometheus_nginxlog_exporter时，可能需要将配置文件挂载在某volume上以便于服务启动使用。</p>
+<p>当然这时候还存在一个问题，Nginx服务如何能规律的产生log呢？<br>这就需要引入k8s的liveness和readiness probe监测配置了。</p>
+<p><strong>K8S 容器状态监测</strong></p>
+<blockquote>
+<p>Both liveness &amp; readiness probes are used to control the health of an application. Failing liveness probe will restart the container, whereas failing readiness probe will stop our application from serving traffic.</p>
+</blockquote>
+<p>Refer: <a target="_blank" rel="noopener" href="https://medium.com/@AADota/kubernetes-liveness-and-readiness-probes-difference-1b659c369e17">Liveness and Readiness Probes — Difference</a></p>
+<p>至此，一个如何配置Nginx 前端服务的监控数据指标讲解完成。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正如前言所说，本文仅针对Dev如何配置所开发的服务的以暴露监控指标便于监控平台识别，具体监控平台方如何配置，如何告警不在本文范畴。<br>希望通过本文<strong>讲述如何通过配置Springboot服务和Nginx服务暴露其Metric监控数据接口</strong>，以供Prometheus调用消费。能让读者有所启发或思路进行扩展。<br>当然，本文也只是在结合作者个人使用经验进行整理和记录，奈何作者经验浅薄，又不愿将来有用之时却寻找不到相关资料，故而书写此文。<br>必然文中有些文字不恰当或错误之处，若读者不介意，请一一指出。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Dragon</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://dragonwang-hub.github.io/2021/08/27/how-config-microservice-metrics-for-prometheus-monitor/">https://dragonwang-hub.github.io/2021/08/27/how-config-microservice-metrics-for-prometheus-monitor/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Dragon</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Prometheus/">
+                                    <span class="chip bg-color">Prometheus</span>
+                                </a>
+                            
+                                <a href="/tags/Monitor/">
+                                    <span class="chip bg-color">Monitor</span>
+                                </a>
+                            
+                                <a href="/tags/Metrics/">
+                                    <span class="chip bg-color">Metrics</span>
+                                </a>
+                            
+                                <a href="/tags/Nginx/">
+                                    <span class="chip bg-color">Nginx</span>
+                                </a>
+                            
+                                <a href="/tags/Springboot/">
+                                    <span class="chip bg-color">Springboot</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/08/27/how-config-microservice-metrics-for-prometheus-monitor/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="How Config Microservice Metrics for Prometheus Monitor">
+                        
+                        <span class="card-title">How Config Microservice Metrics for Prometheus Monitor</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文重点在于讲述如何通过配置Springboot服务和Nginx服务暴露其Metric监控数据接口，以供Prometheus调用消费。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Devops/" class="post-category">
+                                    Devops
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Prometheus/">
+                        <span class="chip bg-color">Prometheus</span>
+                    </a>
+                    
+                    <a href="/tags/Monitor/">
+                        <span class="chip bg-color">Monitor</span>
+                    </a>
+                    
+                    <a href="/tags/Metrics/">
+                        <span class="chip bg-color">Metrics</span>
+                    </a>
+                    
+                    <a href="/tags/Nginx/">
+                        <span class="chip bg-color">Nginx</span>
+                    </a>
+                    
+                    <a href="/tags/Springboot/">
+                        <span class="chip bg-color">Springboot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/30/android-get-started/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Android Get Started">
+                        
+                        <span class="card-title">Android Get Started</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech-Improvement/" class="post-category">
+                                    Tech Improvement
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Rxjava/">
+                        <span class="chip bg-color">Rxjava</span>
+                    </a>
+                    
+                    <a href="/tags/Layout-ViewModel-LiveData/">
+                        <span class="chip bg-color">Layout/ViewModel/LiveData</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.5'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Dragon Wang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">33k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/dragonwang-hub" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ylwang9627@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://blog.nowcoder.net/dragonzone" class="tooltipped" target="_blank" data-tooltip="牛客: https://blog.nowcoder.net/dragonzone" data-position="top" data-delay="50">
+        <i class="fas fa-bowling-ball"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
