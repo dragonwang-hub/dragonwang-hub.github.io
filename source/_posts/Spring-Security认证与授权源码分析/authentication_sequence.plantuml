@@ -1,0 +1,49 @@
+@startuml
+participant "Request" as ACTOR
+participant "AbstractAuthenticationProcessingFilter" as AAPF
+participant "UsernamePasswordAuthenticationFilter" as UPAF
+participant "ProviderManager" as PM
+participant "AbstractUserDetailsAuthenticationProvider" as AUDAP
+participant "DaoAuthenticationProvider" as DAP
+participant "JdbcUserDetailsManager" as JUDM
+
+activate ACTOR
+activate AAPF
+
+ACTOR -> AAPF:  1 doFilter()
+
+AAPF -> AAPF:   2 requiresAuthentication()
+
+activate UPAF
+AAPF -> UPAF:   3 attemptAuthentication()
+UPAF -> UPAF:   4 setDetails()
+activate PM
+UPAF -> PM:     5 getAuthenticationManager()
+PM -> PM:       5.1 authenticate()
+activate AUDAP
+PM -> AUDAP:    6 authenticate()
+activate DAP
+AUDAP -> DAP:   7 retrieveUser()
+activate JUDM
+DAP -> JUDM:    8 loadUserByUsername()
+JUDM -> JUDM:   9 query()
+JUDM --> DAP:    10 List<UserDetails>
+
+deactivate JUDM
+DAP --> DAP:     11 createSuccessAuthentication()
+DAP --> AUDAP:   12 UsernamePasswordAuthenticationToken
+deactivate DAP
+AUDAP --> PM:    13 UsernamePasswordAuthenticationToken
+PM --> UPAF:      14 UsernamePasswordAuthenticationToken
+deactivate PM
+UPAF --> AAPF:   15 UsernamePasswordAuthenticationToken
+deactivate UPAF
+alt     authentication success
+AAPF --> AAPF:  16 successfulAuthentication()
+else    authentication fail
+AAPF --> AAPF:  17 unsuccessfulAuthentication()
+end
+
+AAPF --> ACTOR
+deactivate ACTOR
+@enduml

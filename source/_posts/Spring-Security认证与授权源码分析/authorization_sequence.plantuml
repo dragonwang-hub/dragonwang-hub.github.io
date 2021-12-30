@@ -1,0 +1,40 @@
+@startuml
+participant "Request" as ACTOR
+participant "FilterSecurityInterceptor" as FSI
+participant "AbstractSecurityInterceptor" as ASI
+participant "DefaultFilterInvocationSecurityMetadataSource" as DFISMS
+participant "AffirmativeBased" as AB
+
+participant "ExceptionTranslationFilter" as ETF
+participant "LoginUrlAuthenticationEntryPoint" as LUAEP
+
+activate ACTOR
+activate FSI
+ACTOR -> FSI:   1 doFilter()
+FSI -> FSI:     2 invoke()
+activate ASI
+FSI -> ASI:     3 beforeInvocation()
+
+ASI -> ASI:     4 obtainSecurityMetadataSource()
+activate DFISMS
+ASI -> DFISMS:  5 getAttributes()
+deactivate DFISMS
+ASI -> ASI:     6 attemptAuthorization()
+activate AB
+ASI -> AB:      7 decide()
+
+alt     access deny
+AB -> ETF:      7.1 handleAccessDeniedException()
+ETF -> LUAEP:   7.2 commence()
+LUAEP --> ACTOR:7.3 redirect login page
+end
+
+deactivate AB
+ASI --> FSI:    8 InterceptorStatusToken
+deactivate ASI
+FSI --> FSI:    9 afterInvocation
+FSI --> ACTOR
+deactivate FSI
+
+deactivate ACTOR
+@enduml
